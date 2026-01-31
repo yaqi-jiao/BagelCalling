@@ -1,0 +1,36 @@
+---
+title: "About Bagel"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/yaqi-jiao-869ba3383/
+    - icon: github
+      text: Github
+      href: https://github.com/yaqi-jiao
+---
+
+In *Everything Everywhere All at Once*, the protagonist's daughter Joy—who also serves as the film's ultimate antagonist—uses her powers to compress the entire universe onto a single bagel, creating an all-consuming void. Through it, she confronts the truth of life: **“nothing matters.”** That’s the infinite potential of the bagel.
+
+Leaving aside the film’s deeper themes of chaos, existential crisis, and nihilism, I was left with one irresistible urge: **I also want to make a bagel**, a place where I gather everything from my journey through bioinformatics.
+
+### What can you find through this bagel?
+
+**TIL (Today I Learned):** Curated notes and useful bits I pick up along the way in bioinformatics.
+
+**TIF (Things I Have Found):** Notes on insightful papers—ideas worth remembering and building upon.
+
+**TIB (Things I Have Built):** Projects I’m working on, from early sketches to functional tools.
+
+**Milestone:** Personal victories, progress updates, and moments worth celebrating.
+
+**Misc:** Non-technical musings, occasional reflections, and whatever else fits the mood.
+
+...and perhaps more to come. 
+
+After all, **you can put *everything* on a bagel!!**

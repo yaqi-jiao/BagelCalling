@@ -1,0 +1,14 @@
+# Quarto generated file
+_site/
+.quarto/
+*/.quarto/
+*.html
+
+# system file
+.DS_Store
+Thumbs.db
+
+# RStudio file
+.Rproj.user/
+.Rhistory
+*.Rproj
