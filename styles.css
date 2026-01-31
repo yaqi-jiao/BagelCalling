@@ -1,0 +1,17 @@
+/* css styles */
+/* header banner color */
+.title-block-banner {
+    background-color: black;
+    background-image: none;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* title and subtitle color */
+.title-block-banner .title-block-title,
+.title-block-banner .title-block-subtitle {
+    color: white;
+}
