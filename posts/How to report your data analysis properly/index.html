@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yaqi Jiao">
+<meta name="dcterms.date" content="2026-01-28">
+<meta name="description" content="Not an easy pass with distinction">
 
-<title>Bagel Calling</title>
+<title>How to present statistical analysis results properly? – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +26,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,77 +71,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bagel Calling</span>
     </a>
   </div>
@@ -151,7 +94,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About Bagel</span></a>
   </li>  
   <li class="nav-item compact">
@@ -174,132 +117,96 @@ window.Quarto = {
 <!-- content -->
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Bagel Calling</h1>
-                      </div>
+    <div class="quarto-title column-body">
+      <h1 class="title">How to present statistical analysis results properly?</h1>
+                  <div>
+        <div class="description">
+          Not an easy pass with distinction
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">TIL</div>
+              </div>
+                  </div>
   </div>
     
   
-  <div class="quarto-title-meta column-page-left">
+  <div class="quarto-title-meta">
 
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Yaqi Jiao </p>
+            </div>
+    </div>
       
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">January 28, 2026</p>
+      </div>
+    </div>
     
       
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="TWlzYw==">Misc <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VElM">TIL <span class="quarto-category-count">(2)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="VElM" data-listing-date-sort="1769554800000" data-listing-file-modified-sort="1769942972113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<div class="thumbnail"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/How to report your data analysis properly/beta.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/How to report your data analysis properly/index.html" class="no-external">How to present statistical analysis results properly?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
+<p>After a nerve-wracking month of waiting, my grade for BIOS15 (Processing and Analysis of Biological Data) is finally out! I received a <strong>VG</strong>🎉, which was not easy, especially since my initial grades for the scientific report writing assignments were quite low. After spending a huge amount of time catching up on statistics and R programming—finally understanding what Linear Regression and (Generalized) linear mixed models actually do—and successfully turning the results into decent-looking graphs with ggplot2 and LaTeX, I still needed to describe them in a scientific, intuitive, and easy-to-understand way. And this is the most important part of making your analysis accessible to both peers and the general public.</p>
+<p>After taking this course, I realized that I had received very little training like this in my previous regenerative biology lab. Even when senior PhD students in the research group presented their results and mentioned statistical data, the information I got was often something like, <em>“Compared to the single mutant, the myocardial cells in double mutant zebrafish regenerated significantly 60 days after cardiac surgery,”</em> rather than the more appropriate <em>“The myocardial cells in double mutant zebrafish regenerated by xx% 60 days after cardiac surgery.”</em> This might be another major difference between wet-lab and dry-lab analysis: histology staining results on a PPT seem self-evident, so I never actively considered whether these images and findings needed statistical support. I think that if one wants to transition from wet-lab to dry-lab work, <strong>it’s essential to learn how to present analysis results smartly; otherwise, your conclusions may lack credibility.</strong></p>
+<p>Here are some takeaways I had after the course👇:</p>
+<ol type="1">
+<li><p><strong>R Markdown</strong> and <strong>LaTeX</strong> are truly amazing! R Markdown saves a lot of time on formatting</p></li>
+<li><p><strong>Research hypotheses and well-defined research questions</strong> are crucial! Of course, when you’re staring at a bunch of numbers, it’s hard to come up with meaningful hypotheses. That’s why <strong>early data exploration</strong> (summary statistics and graphical exploration) is essential to understand their patterns and distributions.</p></li>
+<li><p>Before fitting specific models, spend some time <strong>understanding your variables</strong>. Are they continuous or discrete? This influences model selection! Pay attention to <strong>the units of the variables and what they actually represent</strong>, as this affects the choice of predictors and responses.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Table.jpg" class="img-fluid figure-img"></p>
+<figcaption>Make a variable table can also help your reader. Source: my final report</figcaption>
+</figure>
 </div>
-<div class="delink listing-description"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-<p>Not an easy pass with distinction</p>
-</a></div>
+<ol start="4" type="1">
+<li><p>In the introduction, clearly state the research background and objectives.</p></li>
+<li><p>In the methods section, specify the purpose of each method and explain how they were applied. And this will also help you better understand what you are doing.</p></li>
+<li><p>In the results section: <strong>quantify the effects for variables relevant to the research question!</strong> Effect size is expressed through standard deviation, so if you want to describe the impact of a specific variable on the response, you can calculate the predicted value for the mean of the response and some contrast, like +1 SD.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Satisfied.jpg" class="img-fluid figure-img"></p>
+<figcaption>That’s how I quantify the effects in my final report</figcaption>
+</figure>
 </div>
-<div class="metadata">
-<a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-<div class="listing-date">
-Jan 28, 2026
+<ol start="7" type="1">
+<li><p>For all statistically significant results, <strong>provide a biological interpretation</strong>. Explain what these numbers mean biologically, since you are, after all, a biology researcher!</p></li>
+<li><p>Avoid ambiguous abbreviations in tables and figures; write out the variable names. <strong>Captions</strong> are often overlooked but are essential—explain everything in the table/figure clearly.</p></li>
+<li><p>After writing, <strong>check for duplicate abbreviations and shorthand</strong>. For example, don’t use “GLMM” in one part of the report and “(Generalized) linear mixed model” in another. Write out the full term the first time it appears, followed by the abbreviation in parentheses, and then use the abbreviation consistently thereafter.</p></li>
+<li><p>Comment your code clearly!</p></li>
+<li><p>Image size matters. Sometimes you need to make trade-offs to <strong>ensure the main report is easy to read</strong>. Additional material can be included as supplementary.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="WrongExample.jpg" class="img-fluid figure-img"></p>
+<figcaption>Bad example! When I want to put too much information in my figure. Here’s teacher’s comment: <em>“Nice but complex figure. I think it would look nicer if it was about half the height, so that the biplots are square and the loading plots could be more compact too”</em></figcaption>
+</figure>
 </div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="VElM" data-listing-date-sort="1769036400000" data-listing-file-modified-sort="1769859124402" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="654">
-<div class="thumbnail"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
+<ol start="12" type="1">
+<li><strong>Don’t spend too much time learning ggplot2 from the bottom up</strong>. It’s a package better mastered through practice.</li>
+</ol>
 
-<img loading="lazy" src="./posts/How to maintain Git and your local code/CoverImage.jpg" class="thumbnail-image">
 
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">How to Maintain Git and Your Local Code?</a>
-</h3>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-<p>Git add, git commit, git push. <br>Just like how you put an elephant into the firdge.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-<div class="listing-date">
-Jan 22, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="TWlzYw==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1769859124406" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="321">
-<div class="thumbnail"><a href="./posts/When the bagel calls/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\When the bagel calls\BagelUniverse.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/When the bagel calls/index.html" class="no-external">When the Bagel Calls</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWlzYw=='); return false;">Misc</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/When the bagel calls/index.html" class="no-external">
-The best time to start a tech blog was ten years ago. The second-best time is now.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/When the bagel calls/index.html" class="no-external">
-<div class="listing-date">
-Jan 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
