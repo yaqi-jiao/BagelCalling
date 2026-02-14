@@ -16,3 +16,7 @@ figure figcaption {
   border-radius: 0 4px 4px 0;
 }
 
+/* 导航栏背景色 */
+.navbar {
+  background-color: #F4F0E4 !important;
+}
