@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Yaqi Jiao">
+<meta name="dcterms.date" content="2026-02-15">
 
-<title>Bagel Calling – 🥯 Home</title>
+<title>Course note: Essence of Linear Algebra, Pt.2 – 🥯 Home</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,35 +70,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -130,17 +101,17 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">🥯 Home</span>
     </a>
   </div>
@@ -151,7 +122,7 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About Bagel</span></a>
   </li>  
   <li class="nav-item compact">
@@ -172,194 +143,176 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Course note: Essence of Linear Algebra, Pt.2</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">TIL</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Yaqi Jiao </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 15, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="TWlzYw==">Misc <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VElM">TIL <span class="quarto-category-count">(4)</span></div></div></div>
+    
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Bagel Calling</h1>
+
+
+
+
+<section id="course-note-essence-of-linear-algebra-pt.2" class="level1">
+<h1>Course note: Essence of Linear Algebra, Pt.2</h1>
+<p>This blog post is Part 2 of my study notes for <strong>“The Essence of Linear Algebra.”</strong> For Part 1, see&nbsp;<link>.</p>
+<p>The main content includes: the dot product, cross product, change of basis, eigenvectors, and eigenvalues. Continuing the style of the previous post, I will explain concepts from both&nbsp;geometric intuition&nbsp;and&nbsp;algebraic computation&nbsp;perspectives wherever possible.</p>
+</section>
+<section id="part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" class="level1">
+<h1>Part2. Dot product, Cross product, <strong>Change of Basis</strong> and Eigenvalues</h1>
+<section id="dot-product" class="level2">
+<h2 class="anchored" data-anchor-id="dot-product">1. Dot product</h2>
+<section id="basic-concept" class="level3">
+<h3 class="anchored" data-anchor-id="basic-concept">Basic concept</h3>
+<p><strong>Geometric Perspective:</strong>&nbsp;The geometric meaning of the dot product of two vectors <span class="math inline">\(\vec{v} \cdot \vec{w}\)</span> is:&nbsp;<strong>the length of the projection of <span class="math inline">\(\vec{w}\)</span> onto <span class="math inline">\(\vec{v}\)</span> multiplied by the length of <span class="math inline">\(\vec{v}\)</span></strong>&nbsp;(and vice versa).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dotproduct_concept.jpg" class="img-fluid figure-img" width="500"></p>
+<figcaption>More intuitively: Project <span class="math inline">\(\vec{w}\)</span> onto the line defined by <span class="math inline">\(\vec{v}\)</span>. This yields a signed scalar projection value (positive or negative depending on whether the projection aligns with the direction of <span class="math inline">\(\vec{v}\)</span>). Multiply this value by the length of <span class="math inline">\(\vec{v}\)</span>. The result is a&nbsp;<strong>scalar</strong>&nbsp;that describes the degree to which the vectors point in the same direction.</figcaption>
+</figure>
+</div>
+<p><strong>Algebraic Perspective:</strong>&nbsp;The dot product is calculated as the sum of the products of corresponding components:</p>
+<p><span class="math display">\[\vec{v} \cdot \vec{w}= v_1 w_1 + v_2 w_2 + ...\]</span></p>
+<p>In two dimensions: <span class="math inline">\(\vec{v} = \begin{bmatrix} a \\ b \end{bmatrix},\ \vec{w} = \begin{bmatrix} c \\ d \end{bmatrix}\)</span>, then <span class="math inline">\(\vec{v}\cdot\vec{w}=ac+bd\)</span></p>
+</section>
+<section id="duality-of-the-dot-product" class="level3">
+<h3 class="anchored" data-anchor-id="duality-of-the-dot-product"><strong>Duality of the Dot Product:</strong></h3>
+<p>The dot product can also be understood from the perspective of linear transformations. A row vector <span class="math inline">\(\begin{bmatrix}a &amp; b \end{bmatrix}\)</span> can be seen as a linear transformation from two-dimensional space to one-dimensional space. It maps any vector <span class="math inline">\(\begin{bmatrix}x \\ y\end{bmatrix}\)</span> to <span class="math inline">\(ax+by\)</span>. The result of this transformation is exactly the dot product of the vector corresponding to that row vector and the input vector. Therefore, <strong>the geometric interpretation (projection) and the algebraic interpretation (linear transformation) of the dot product are unified</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dot_product_duality.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+</section>
+<section id="commutativity-of-the-dot-product" class="level3">
+<h3 class="anchored" data-anchor-id="commutativity-of-the-dot-product"><strong>Commutativity of the Dot Product</strong></h3>
+<p>Geometrically, the length of the projection of <span class="math inline">\(\vec{v}\)</span> onto <span class="math inline">\(\vec{w}\)</span> times the length of <span class="math inline">\(\vec{w}\)</span> is equal in value to the length of the projection of <span class="math inline">\(\vec{w}\)</span> onto <span class="math inline">\(\vec{v}\)</span> times the length of <span class="math inline">\(\vec{v}\)</span> (since the lengths of the vectors and the angle between them are the same). Algebraically, it’s clearly true because <span class="math inline">\(ac+bd = ca+db\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Dotproduct_order.gif" class="img-fluid figure-img" width="500"></p>
+<figcaption>The value of the dot product is related to the lengths of the two vectors and the angle between them. It is unaffected by their order, so the two products are always numerically equal</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="cross-product" class="level2">
+<h2 class="anchored" data-anchor-id="cross-product">2. Cross product</h2>
+<section id="basic-concept-1" class="level3">
+<h3 class="anchored" data-anchor-id="basic-concept-1">Basic concept</h3>
+<p><strong>Geometric Intuition:</strong>&nbsp;In two dimensions, the result of the cross product is a scalar (signed area).</p>
+<ul>
+<li><p><strong>Magnitude:</strong>&nbsp;Equal to the area of the parallelogram formed by <span class="math inline">\(\vec{v}\)</span> and <span class="math inline">\(\vec{w}\)</span> as adjacent sides.</p></li>
+<li><p><strong>Direction (in 3D):</strong>&nbsp;Perpendicular to the plane containing <span class="math inline">\(\vec{v}\)</span> and <span class="math inline">\(\vec{w}\)</span>, determined by the&nbsp;<strong>right-hand rule</strong>: Point your index finger in the direction of <span class="math inline">\(\vec{v}\)</span>, your middle finger in the direction of <span class="math inline">\(\vec{w}\)</span>, and your thumb will point in the direction of <span class="math inline">\(\vec{v} \times \vec{w}\)</span> (in a right-handed coordinate system).</p></li>
+</ul>
+<p><strong>Algebraic Formula:</strong></p>
+<p>In 2D (treating the result as a signed area):</p>
+<p><span class="math display">\[\vec{v} \times \vec{w} = \det\begin{bmatrix} v_1 &amp; w_1 \\ v_2 &amp; w_2 \end{bmatrix} = v_1 w_2 - v_2 w_1\]</span></p>
+<p>For three dimensions, the cross product results in a vector.</p>
+<p>It can be remembered using the determinant expansion formula:</p>
+<p><span class="math inline">\(\vec{v} \times \vec{w} = \begin{bmatrix} v_1 \ v_2 \ v_3 \end{bmatrix} \times \begin{bmatrix} w_1 \ w_2 \ w_3 \end{bmatrix} = \det\begin{bmatrix} \vec{i} &amp; v_1 &amp; w_1 \\ \vec{j} &amp; v_2 &amp; w_2 \\ \vec{k} &amp; v_3 &amp; w_3 \end{bmatrix} = \vec{i}(v_2w_3 - v_3 w_2)+\vec{j}(v_1w_3 - v_3 w_1)+\vec{k}(v_1w_2 - v_2 w_1)\)</span></p>
+</section>
+<section id="duality-of-cross-product" class="level3">
+<h3 class="anchored" data-anchor-id="duality-of-cross-product">Duality of Cross product</h3>
+<p>For two fixed vectors <span class="math inline">\(\vec{v}\)</span> and <span class="math inline">\(\vec{w}\)</span> in three-dimensional space, if there exists a unique vector <span class="math inline">\(\vec{p} =\begin{bmatrix} p_1 \ p_2 \ p_3 \end{bmatrix}\)</span> such that its&nbsp;<strong>dot product</strong>&nbsp;with any vector <span class="math inline">\(x=\begin{bmatrix} x \ y \ z \end{bmatrix}\)</span> equals the determinant of the matrix formed by <span class="math inline">\(x\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(w\)</span>, i.e.:</p>
+<p><span class="math display">\[\begin{bmatrix} p_1 \\ p_2 \\ p_3 \end{bmatrix} \times \begin{bmatrix} x \\ y \\ z \end{bmatrix} = det(\begin{bmatrix} x &amp; v_1 &amp; w_1 \\ y &amp; v_2 &amp; w_2 \\ z &amp; v_3 &amp; w_3 \end{bmatrix})\]</span></p>
+<p>Then this <span class="math inline">\(\vec{p}\)</span> is defined as the&nbsp;<strong>cross product</strong>&nbsp;<span class="math inline">\(\vec{v}\times\vec{w}\)</span> of <span class="math inline">\(\vec{v}\)</span> and <span class="math inline">\(\vec{w}\)</span>. Geometrically, the direction of <span class="math inline">\(\vec{p}\)</span> is perpendicular to both <span class="math inline">\(\vec{v}\)</span> and <span class="math inline">\(\vec{w}\)</span>, and its magnitude equals the area of the parallelogram they span.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="cross_product_duality.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<p>The cross product is&nbsp;<strong>not commutative</strong>: <span class="math inline">\(\vec{v}\times\vec{w} = -\vec{w}\times\vec{v}\)</span></p>
+</section>
+</section>
+<section id="change-of-basis" class="level2">
+<h2 class="anchored" data-anchor-id="change-of-basis">3. Change of Basis</h2>
+<section id="basic-concept-2" class="level3">
+<h3 class="anchored" data-anchor-id="basic-concept-2">Basic Concept</h3>
+<p>The same abstract vector <span class="math inline">\(\vec{v}\)</span> has different coordinate representations in different coordinate systems (i.e., with different basis vectors).</p>
+<p>Let <span class="math inline">\(\mathcal{B} = {\vec{b}_1,\vec{b}_2}\)</span> be a basis. Then the coordinates of vector <span class="math inline">\(\vec{v}\)</span> in the standard basis, denoted <span class="math inline">\([x\ y]^T\)</span>, and its coordinates in basis <span class="math inline">\(\mathcal{B}\)</span>, denoted <span class="math inline">\([c_1\ c_2]^T\)</span>, satisfy: <span class="math inline">\(\vec{v}=c_1\vec{b_1}+c_2\vec{b_2}\)</span></p>
+<p>We already know that a matrix represents a linear transformation. Previously, we described it as:&nbsp;<strong>the columns of a matrix represent the images of the transformed basis vectors.</strong>&nbsp;A more precise description is:&nbsp;<strong>the columns of a matrix represent the&nbsp;<em>coordinates</em>&nbsp;of the transformed basis vectors.</strong></p>
+<p><span class="math display">\[\begin{bmatrix} x \\ y \end{bmatrix} = \underbrace{\begin{bmatrix} \vec{b}_1 &amp; \vec{b}_2 \end{bmatrix}}_{\text{Transition Matrix } P} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}\]</span></p>
+<p>The matrix <span class="math inline">\(P\)</span> is called the&nbsp;<strong>change of basis matrix from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis</strong>. Its columns are the coordinates of the basis vectors in <span class="math inline">\(\mathcal{B}\)</span>, expressed in the standard basis.</p>
+</section>
+<section id="linear-transformation-vs.-change-of-basis" class="level3">
+<h3 class="anchored" data-anchor-id="linear-transformation-vs.-change-of-basis"><strong>Linear Transformation VS. Change of Basis:</strong></h3>
+<ul>
+<li><p>In a&nbsp;<strong>linear transformation</strong>, the coordinate system (basis) is fixed, and the vector itself is moved, causing its coordinates to change.</p></li>
+<li><p>In a&nbsp;<strong>change of basis</strong>, the vector itself remains fixed, but the coordinate system (the observer’s perspective) changes, so the coordinate values representing the same vector change.</p></li>
+</ul>
+</section>
+<section id="important-application" class="level3">
+<h3 class="anchored" data-anchor-id="important-application"><strong>Important Application</strong></h3>
+<p>If a linear transformation <span class="math inline">\(T\)</span> has matrix <span class="math inline">\(A\)</span> in the standard basis, and we want its representation <span class="math inline">\(B\)</span> in another basis <span class="math inline">\(\mathcal{B}\)</span>, we have the <strong>similarity transformation</strong> relation: <span class="math inline">\(B = P^{-1}AP\)</span></p>
+<p>where <span class="math inline">\(P\)</span> is the change of basis matrix (from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis). This allows us to choose a more convenient basis to simplify the description of a transformation.</p>
+</section>
+</section>
+<section id="eigenvalues-and-eigenvectors" class="level2">
+<h2 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors">4. Eigenvalues and Eigenvectors</h2>
+<section id="basic-concept-3" class="level3">
+<h3 class="anchored" data-anchor-id="basic-concept-3">Basic concept</h3>
+<p><strong>Geometric Concept:</strong>&nbsp;For a linear transformation <span class="math inline">\(A\)</span>, most vectors will be knocked off their span (their direction will change). However, there exist special non-zero vectors that are&nbsp;<strong>only stretched or compressed, and do not change direction</strong>&nbsp;(they may point in the exact opposite direction, which is still considered the same line). These vectors are called&nbsp;<strong>eigenvectors</strong>, and the corresponding stretching factor is called the&nbsp;<strong>eigenvalue</strong>.</p>
+<p><strong><span class="math inline">\(A\vec{v} = \lambda \vec{v}\)</span></strong>: (Matrix times vector) equals (vector times scalar)</p>
+<p><strong>Algebraic Derivation Process:</strong></p>
+<ol type="1">
+<li><p>Introduce the identity matrix <span class="math inline">\(I\)</span> to rewrite <span class="math inline">\(\lambda \vec{v}\)</span> as a matrix-vector product: <span class="math inline">\(\lambda \vec{v} = \lambda I \vec{v}\)</span></p>
+<p>Why the identity matrix? Because for any vector <span class="math inline">\(\vec{v}\)</span>, the identity matrix has the property <span class="math inline">\(I\vec{v} = \vec{v}\)</span>.</p></li>
+<li><p>Rearranging the terms gives: <span class="math inline">\((A - \lambda I) \vec{v} = \vec{0}\)</span></p></li>
+<li><p>The problem now becomes: find a non-zero vector <span class="math inline">\(\vec{v}\)</span> such that its product with the matrix <span class="math inline">\((A - \lambda I)\)</span> is the zero vector.</p>
+<p>Recalling previous knowledge, for a non-zero vector to satisfy this, the matrix must represent a transformation that collapses dimensions (i.e., it is singular), which means its determinant is zero: <span class="math inline">\(\det(A - \lambda I) = 0\)</span></p>
+<p><span class="math inline">\((A - \lambda I)\)</span> can be written in matrix form as: <span class="math inline">\(\begin{bmatrix} a-λ &amp; b \\ c &amp; d-λ \end{bmatrix}\)</span> (where <span class="math inline">\(A = \begin{bmatrix} a &amp; b \\ c &amp; d\end{bmatrix}\)</span>)</p>
+<p>Therefore, for a <span class="math inline">\(2 \times 2\)</span> matrix, there are two eigenvalues.</p></li>
+<li><p>Substitute the solved <span class="math inline">\(\lambda\)</span> values back into <span class="math inline">\((A - \lambda I) \vec{v} = \vec{0}\)</span> and solve the system of equations to find the corresponding eigenvectors. Each eigenvalue has infinitely many eigenvectors, as they all lie on the same line (the eigenspace). Usually, we take one representative direction vector.</p></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Lambda_visualization.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<p>Note: In R, the&nbsp;<code>eigen()</code>&nbsp;function returns one normalized eigenvector for each eigenvalue, even though the eigenspace is a one-dimensional line, it only gives one representative vector.</p>
+<div style="color: gray; font-size: 0.9em; margin-top: 2em; border-top: 1px solid #eee; padding-top: 1em;">
+<p><strong>reference</strong></p>
+<p>This note is a summary of the online course <a href="https://youtu.be/fNk_zzaMoSs?si=QQmEKh5MriMYjJ1Z">Essence of Linear Algebra</a></p>
 </div>
 
 
+</section>
+</section>
+</section>
 
-<div class="quarto-title-meta column-page-left">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Pick a bagel that interests you;)</p>
-
-
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="VElM" data-listing-date-sort="1771110000000" data-listing-file-modified-sort="1771171008320" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1288">
-<div class="thumbnail"><a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\Course notes_Essence of Linear Algebra Pt2\dotproduct_concept.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">Course note: Essence of Linear Algebra, Pt.2</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
-This blog post is Part 2 of my study notes for <strong>“The Essence of Linear Algebra.”</strong> For Part 1, see&nbsp;<link>.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
-<div class="listing-date">
-Feb 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="VElM" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1770561511244" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
-<div class="thumbnail"><a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Course notes_Essence of Linear Algebra Pt1/BagelScene.png" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">Course note: Essence of Linear Algebra, Pt.1</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
-<p>The cover image pays tribute to the essence of linear algebra.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
-<div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="VElM" data-listing-date-sort="1769554800000" data-listing-file-modified-sort="1769942972113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<div class="thumbnail"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/How to report your data analysis properly/beta.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/How to report your data analysis properly/index.html" class="no-external">How to present statistical analysis results properly?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-<p>Not an easy pass with distinction</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-<div class="listing-date">
-Jan 28, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-categories="VElM" data-listing-date-sort="1769036400000" data-listing-file-modified-sort="1769859124402" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="654">
-<div class="thumbnail"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/How to maintain Git and your local code/CoverImage.jpg" class="thumbnail-image">
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">How to Maintain Git and Your Local Code?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-<p>Git add, git commit, git push. <br>Just like how you put an elephant into the firdge.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-<div class="listing-date">
-Jan 22, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-categories="TWlzYw==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1769859124406" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="321">
-<div class="thumbnail"><a href="./posts/When the bagel calls/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\When the bagel calls\BagelUniverse.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/When the bagel calls/index.html" class="no-external">When the Bagel Calls</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWlzYw=='); return false;">Misc</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/When the bagel calls/index.html" class="no-external">
-The best time to start a tech blog was ten years ago. The second-best time is now.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/When the bagel calls/index.html" class="no-external">
-<div class="listing-date">
-Jan 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
