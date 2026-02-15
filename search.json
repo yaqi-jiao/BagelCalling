@@ -88,14 +88,14 @@
     "href": "index.html",
     "title": "Bagel Calling",
     "section": "",
-    "text": "Pick a bagel that interests you;)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCourse note: Essence of Linear Algebra, Pt.2\n\n\n\nTIL\n\n\n\n\n\n\n\n\n\nFeb 15, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nCourse note: Essence of Linear Algebra, Pt.1\n\n\n\nTIL\n\n\n\nThe cover image pays tribute to the essence of linear algebra.\n\n\n\n\n\nFeb 9, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nHow to present statistical analysis results properly?\n\n\n\nTIL\n\n\n\nNot an easy pass with distinction\n\n\n\n\n\nJan 28, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nHow to Maintain Git and Your Local Code?\n\n\n\nTIL\n\n\n\nGit add, git commit, git push. Just like how you put an elephant into the firdge.\n\n\n\n\n\nJan 22, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nWhen the Bagel Calls\n\n\n\nMisc\n\n\n\n\n\n\n\n\n\nJan 15, 2026\n\n\nYaqi Jiao\n\n\n\n\n\nNo matching items"
+    "text": "Pick a bagel that interests you;)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCourse note: Essence of Linear Algebra, Pt.2\n\n\n\nTIL\n\n\n\nDive deeper into the geometric interpretation of linear algebra.\n\n\n\n\n\nFeb 15, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nCourse note: Essence of Linear Algebra, Pt.1\n\n\n\nTIL\n\n\n\nThe cover image pays tribute to the essence of linear algebra.\n\n\n\n\n\nFeb 9, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nHow to present statistical analysis results properly?\n\n\n\nTIL\n\n\n\nNot an easy pass with distinction\n\n\n\n\n\nJan 28, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nHow to Maintain Git and Your Local Code?\n\n\n\nTIL\n\n\n\nGit add, git commit, git push. Just like how you put an elephant into the firdge.\n\n\n\n\n\nJan 22, 2026\n\n\nYaqi Jiao\n\n\n\n\n\n\n\n\n\n\n\n\nWhen the Bagel Calls\n\n\n\nMisc\n\n\n\n\n\n\n\n\n\nJan 15, 2026\n\n\nYaqi Jiao\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/Course notes_Essence of Linear Algebra Pt2/index.html",
     "href": "posts/Course notes_Essence of Linear Algebra Pt2/index.html",
     "title": "Course note: Essence of Linear Algebra, Pt.2",
     "section": "",
-    "text": "This blog post is Part 2 of my study notes for “The Essence of Linear Algebra.” For Part 1, see .\nThe main content includes: the dot product, cross product, change of basis, eigenvectors, and eigenvalues. Continuing the style of the previous post, I will explain concepts from both geometric intuition and algebraic computation perspectives wherever possible."
+    "text": "This blog post is Part 2 of my study notes for “The Essence of Linear Algebra.” For Part 1, see Course notes_Essence of Linear Algebra Pt1.\nThe main content includes: the dot product, cross product, change of basis, eigenvectors, and eigenvalues. Continuing the style of the previous post, I will explain concepts from both geometric intuition and algebraic computation perspectives wherever possible."
   },
   {
     "objectID": "posts/Course notes_Essence of Linear Algebra Pt2/index.html#dot-product",
