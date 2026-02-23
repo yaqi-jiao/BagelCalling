@@ -71,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -105,7 +106,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -144,7 +145,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Course note: Essence of Linear Algebra, Pt.1</h1>
@@ -182,8 +183,29 @@ window.Quarto = {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#part-1-vectors-transformations-and-matrices" id="toc-part-1-vectors-transformations-and-matrices" class="nav-link active" data-scroll-target="#part-1-vectors-transformations-and-matrices">Part 1: Vectors, Transformations, and Matrices</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-vector" id="toc-what-is-a-vector" class="nav-link" data-scroll-target="#what-is-a-vector">1. What is a Vector?</a></li>
+  <li><a href="#linear-combination-span-and-basis" id="toc-linear-combination-span-and-basis" class="nav-link" data-scroll-target="#linear-combination-span-and-basis">2. Linear Combination, Span, and Basis</a></li>
+  <li><a href="#matrices-as-linear-transformations" id="toc-matrices-as-linear-transformations" class="nav-link" data-scroll-target="#matrices-as-linear-transformations">3. Matrices as Linear Transformations</a></li>
+  <li><a href="#matrix-multiplication-as-composition" id="toc-matrix-multiplication-as-composition" class="nav-link" data-scroll-target="#matrix-multiplication-as-composition">4. Matrix Multiplication as Composition</a></li>
+  <li><a href="#determinant" id="toc-determinant" class="nav-link" data-scroll-target="#determinant">5. Determinant</a></li>
+  <li><a href="#inverse-matrices" id="toc-inverse-matrices" class="nav-link" data-scroll-target="#inverse-matrices">6. Inverse Matrices</a></li>
+  <li><a href="#rank-and-column-space" id="toc-rank-and-column-space" class="nav-link" data-scroll-target="#rank-and-column-space">7. Rank and Column Space</a></li>
+  <li><a href="#null-space" id="toc-null-space" class="nav-link" data-scroll-target="#null-space">8. Null Space</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -195,9 +217,9 @@ window.Quarto = {
 <p>To honor the spirit of this tutorial and highlight the geometric nature of linear algebra, I will strive to explain concepts from both algebraic and geometric viewpoints wherever possible.</p>
 <p>Due to the volume of content, these notes will be published in two parts.</p>
 <section id="part-1-vectors-transformations-and-matrices" class="level1">
-<h1><strong>Part 1: Vectors, Transformations, and Matrices</strong></h1>
+<h1>Part 1: Vectors, Transformations, and Matrices</h1>
 <section id="what-is-a-vector" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-a-vector"><strong>1. What is a Vector?</strong></h2>
+<h2 class="anchored" data-anchor-id="what-is-a-vector">1. What is a Vector?</h2>
 <ul>
 <li><p><strong>Geometric Perspective</strong>: An&nbsp;<strong>arrow</strong>&nbsp;in space with a specific&nbsp;<strong>length (magnitude)</strong>&nbsp;and&nbsp;<strong>direction</strong>. A vector’s essence is unchanged by translation.</p></li>
 <li><p><strong>Algebraic/Coordinate Perspective</strong>: An&nbsp;<strong>ordered list of numbers</strong>&nbsp;(e.g.,&nbsp;<span class="math inline">\([x, y]\)</span>) that describes how to reach the tip of the arrow from its tail by scaling and adding the basis vectors of a chosen coordinate system. This defines operations like vector addition and scalar multiplication.</p></li>
@@ -206,7 +228,7 @@ window.Quarto = {
 <p>💡 <strong>Key insight</strong>: The numerical representation of a vector implicitly depends on our choice of&nbsp;<strong>basis vectors</strong>.</p>
 </section>
 <section id="linear-combination-span-and-basis" class="level2">
-<h2 class="anchored" data-anchor-id="linear-combination-span-and-basis"><strong>2. Linear Combination, Span, and Basis</strong></h2>
+<h2 class="anchored" data-anchor-id="linear-combination-span-and-basis">2. Linear Combination, Span, and Basis</h2>
 <p>In the standard Cartesian coordinate system, we implicitly use the&nbsp;<strong>basis vectors</strong>&nbsp;<span class="math inline">\(\hat{i} = \begin{bmatrix}1\\0\end{bmatrix}\)</span>&nbsp;and&nbsp;<span class="math inline">\(\hat{j} = \begin{bmatrix}0\\1\end{bmatrix}\)</span>. By scaling and adding&nbsp;<span class="math inline">\(\hat{i}\)</span>&nbsp;and&nbsp;<span class="math inline">\(\hat{j}\)</span>, we can construct any vector in the plane.</p>
 <ul>
 <li><p><strong>Linear Combination</strong>: The result of&nbsp;<strong>scaling and adding</strong>&nbsp;vectors. For example,&nbsp;<span class="math inline">\(a\vec{v} + b\vec{w}\)</span>&nbsp;is a linear combination of&nbsp;<span class="math inline">\(\vec{v}\)</span>&nbsp;and&nbsp;<span class="math inline">\(\vec{w}\)</span>.</p></li>
@@ -230,7 +252,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="matrices-as-linear-transformations" class="level2">
-<h2 class="anchored" data-anchor-id="matrices-as-linear-transformations"><strong>3. Matrices as Linear Transformations</strong></h2>
+<h2 class="anchored" data-anchor-id="matrices-as-linear-transformations">3. Matrices as Linear Transformations</h2>
 <p><strong>💡 Note</strong>: “<em>Transformation</em>” is an intuitive synonym for “<em>function</em>,” suggesting we can understand input-output relationships through the&nbsp;<strong>movement and deformation of space</strong>.</p>
 <p>A&nbsp;<strong>Linear Transformation</strong>&nbsp;is a mapping that satisfies two key properties:</p>
 <ol type="1">
@@ -247,7 +269,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="matrix-multiplication-as-composition" class="level2">
-<h2 class="anchored" data-anchor-id="matrix-multiplication-as-composition"><strong>4. Matrix Multiplication as Composition</strong></h2>
+<h2 class="anchored" data-anchor-id="matrix-multiplication-as-composition">4. Matrix Multiplication as Composition</h2>
 <p>Applying two linear transformations in succession (e.g., rotation&nbsp;<span class="math inline">\(\mathbf{A}\)</span>, then shear&nbsp;<span class="math inline">\(\mathbf{B}\)</span>) results in a new, composite linear transformation. The matrix for this new transformation is the&nbsp;<strong>product</strong>&nbsp;of the original matrices.</p>
 <ul>
 <li><p><strong>Geometric Perspective</strong>: Matrix multiplication corresponds to&nbsp;<strong>composition of linear transformations</strong>&nbsp;(doing one transformation, then another).</p></li>
@@ -262,7 +284,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="determinant" class="level2">
-<h2 class="anchored" data-anchor-id="determinant"><strong>5. Determinant</strong></h2>
+<h2 class="anchored" data-anchor-id="determinant">5. Determinant</h2>
 <p>A linear transformation stretches or squishes space. The determinant&nbsp;<strong>measures this scaling factor</strong>.</p>
 <ul>
 <li><p><strong>Geometric Perspective</strong>: The&nbsp;<strong>absolute value</strong>&nbsp;of the determinant represents the factor by which&nbsp;<strong>areas (in 2D) or volumes (in 3D) are scaled</strong>. The&nbsp;<strong>sign</strong>&nbsp;indicates whether the&nbsp;<strong>orientation</strong>&nbsp;of space is&nbsp;<strong>flipped</strong>&nbsp;(like turning a paper over).</p>
@@ -284,7 +306,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="inverse-matrices" class="level2">
-<h2 class="anchored" data-anchor-id="inverse-matrices"><strong>6. Inverse Matrices</strong></h2>
+<h2 class="anchored" data-anchor-id="inverse-matrices">6. Inverse Matrices</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="linear_system_of_equations.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
@@ -308,7 +330,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="rank-and-column-space" class="level2">
-<h2 class="anchored" data-anchor-id="rank-and-column-space"><strong>7. Rank and Column Space</strong></h2>
+<h2 class="anchored" data-anchor-id="rank-and-column-space">7. Rank and Column Space</h2>
 <ul>
 <li><p><strong>Column Space</strong>: The&nbsp;<strong>span of all column vectors</strong>&nbsp;of a matrix&nbsp;<span class="math inline">\(\mathbf{A}\)</span>. Geometrically, it is the set of all possible output vectors&nbsp;<span class="math inline">\(\mathbf{A}\vec{x}\)</span>. It answers: <em>“After transformation&nbsp;<span class="math inline">\(\mathbf{A}\)</span>, where can all vectors land?”</em></p></li>
 <li><p><strong>Rank</strong>: The&nbsp;<strong>dimension of the column space</strong>. It describes the dimensionality of the output space after the transformation.</p>
@@ -326,7 +348,7 @@ window.Quarto = {
 </ol>
 </section>
 <section id="null-space" class="level2">
-<h2 class="anchored" data-anchor-id="null-space"><strong>8. Null Space</strong></h2>
+<h2 class="anchored" data-anchor-id="null-space">8. Null Space</h2>
 <ul>
 <li><p><strong>Null Space</strong>: The set of all&nbsp;<strong>input vectors</strong>&nbsp;that get mapped to the zero vector under transformation&nbsp;<span class="math inline">\(\mathbf{A}\)</span>:&nbsp;<span class="math inline">\(\{\vec{x} \mid \mathbf{A}\vec{x} = \vec{0}\}\)</span>.</p></li>
 <li><p><strong>Geometric Meaning</strong>: These are the vectors that are “compressed flat” or “annihilated” by the transformation. If the null space contains more than just the zero vector, the transformation is&nbsp;<strong>many-to-one</strong>, which is the essence of its non-invertibility when&nbsp;<span class="math inline">\(\det(\mathbf{A})=0\)</span>.</p></li>
@@ -770,4 +792,5 @@ window.Quarto = {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

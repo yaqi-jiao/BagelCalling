@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Understanding Git from a Tree Perspective/index.html",
       "/posts/Course notes_Essence of Linear Algebra Pt2/index.html",
       "/posts/Course notes_Essence of Linear Algebra Pt1/index.html",
       "/posts/How to report your data analysis properly/index.html",

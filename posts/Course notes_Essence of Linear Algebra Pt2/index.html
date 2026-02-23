@@ -71,6 +71,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -105,7 +106,7 @@ window.Quarto = {
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -144,7 +145,7 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Course note: Essence of Linear Algebra, Pt.2</h1>
@@ -182,8 +183,43 @@ window.Quarto = {
   
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#course-note-essence-of-linear-algebra-pt.2" id="toc-course-note-essence-of-linear-algebra-pt.2" class="nav-link active" data-scroll-target="#course-note-essence-of-linear-algebra-pt.2">Course note: Essence of Linear Algebra, Pt.2</a></li>
+  <li><a href="#part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" id="toc-part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" class="nav-link" data-scroll-target="#part2.-dot-product-cross-product-change-of-basis-and-eigenvalues">Part2. Dot product, Cross product, <strong>Change of Basis</strong> and Eigenvalues</a>
+  <ul class="collapse">
+  <li><a href="#dot-product" id="toc-dot-product" class="nav-link" data-scroll-target="#dot-product">1. Dot product</a>
+  <ul class="collapse">
+  <li><a href="#basic-concept" id="toc-basic-concept" class="nav-link" data-scroll-target="#basic-concept">Basic concept</a></li>
+  <li><a href="#duality-of-the-dot-product" id="toc-duality-of-the-dot-product" class="nav-link" data-scroll-target="#duality-of-the-dot-product">Duality of the Dot Product:</a></li>
+  <li><a href="#commutativity-of-the-dot-product" id="toc-commutativity-of-the-dot-product" class="nav-link" data-scroll-target="#commutativity-of-the-dot-product">Commutativity of the Dot Product</a></li>
+  </ul></li>
+  <li><a href="#cross-product" id="toc-cross-product" class="nav-link" data-scroll-target="#cross-product">2. Cross product</a>
+  <ul class="collapse">
+  <li><a href="#basic-concept-1" id="toc-basic-concept-1" class="nav-link" data-scroll-target="#basic-concept-1">Basic concept</a></li>
+  <li><a href="#duality-of-cross-product" id="toc-duality-of-cross-product" class="nav-link" data-scroll-target="#duality-of-cross-product">Duality of Cross product</a></li>
+  </ul></li>
+  <li><a href="#change-of-basis" id="toc-change-of-basis" class="nav-link" data-scroll-target="#change-of-basis">3. Change of Basis</a>
+  <ul class="collapse">
+  <li><a href="#basic-concept-2" id="toc-basic-concept-2" class="nav-link" data-scroll-target="#basic-concept-2">Basic Concept</a></li>
+  <li><a href="#linear-transformation-vs.-change-of-basis" id="toc-linear-transformation-vs.-change-of-basis" class="nav-link" data-scroll-target="#linear-transformation-vs.-change-of-basis">Linear Transformation VS. Change of Basis:</a></li>
+  <li><a href="#important-application" id="toc-important-application" class="nav-link" data-scroll-target="#important-application">Important Application</a></li>
+  </ul></li>
+  <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors">4. Eigenvalues and Eigenvectors</a>
+  <ul class="collapse">
+  <li><a href="#basic-concept-3" id="toc-basic-concept-3" class="nav-link" data-scroll-target="#basic-concept-3">Basic concept</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -214,7 +250,7 @@ window.Quarto = {
 <p>In two dimensions: <span class="math inline">\(\vec{v} = \begin{bmatrix} a \\ b \end{bmatrix},\ \vec{w} = \begin{bmatrix} c \\ d \end{bmatrix}\)</span>, then <span class="math inline">\(\vec{v}\cdot\vec{w}=ac+bd\)</span></p>
 </section>
 <section id="duality-of-the-dot-product" class="level3">
-<h3 class="anchored" data-anchor-id="duality-of-the-dot-product"><strong>Duality of the Dot Product:</strong></h3>
+<h3 class="anchored" data-anchor-id="duality-of-the-dot-product">Duality of the Dot Product:</h3>
 <p>The dot product can also be understood from the perspective of linear transformations. A row vector <span class="math inline">\(\begin{bmatrix}a &amp; b \end{bmatrix}\)</span> can be seen as a linear transformation from two-dimensional space to one-dimensional space. It maps any vector <span class="math inline">\(\begin{bmatrix}x \\ y\end{bmatrix}\)</span> to <span class="math inline">\(ax+by\)</span>. The result of this transformation is exactly the dot product of the vector corresponding to that row vector and the input vector. Therefore, <strong>the geometric interpretation (projection) and the algebraic interpretation (linear transformation) of the dot product are unified</strong>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -223,7 +259,7 @@ window.Quarto = {
 </div>
 </section>
 <section id="commutativity-of-the-dot-product" class="level3">
-<h3 class="anchored" data-anchor-id="commutativity-of-the-dot-product"><strong>Commutativity of the Dot Product</strong></h3>
+<h3 class="anchored" data-anchor-id="commutativity-of-the-dot-product">Commutativity of the Dot Product</h3>
 <p>Geometrically, the length of the projection of <span class="math inline">\(\vec{v}\)</span> onto <span class="math inline">\(\vec{w}\)</span> times the length of <span class="math inline">\(\vec{w}\)</span> is equal in value to the length of the projection of <span class="math inline">\(\vec{w}\)</span> onto <span class="math inline">\(\vec{v}\)</span> times the length of <span class="math inline">\(\vec{v}\)</span> (since the lengths of the vectors and the angle between them are the same). Algebraically, it’s clearly true because <span class="math inline">\(ac+bd = ca+db\)</span>.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -273,14 +309,14 @@ window.Quarto = {
 <p>The matrix <span class="math inline">\(P\)</span> is called the&nbsp;<strong>change of basis matrix from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis</strong>. Its columns are the coordinates of the basis vectors in <span class="math inline">\(\mathcal{B}\)</span>, expressed in the standard basis.</p>
 </section>
 <section id="linear-transformation-vs.-change-of-basis" class="level3">
-<h3 class="anchored" data-anchor-id="linear-transformation-vs.-change-of-basis"><strong>Linear Transformation VS. Change of Basis:</strong></h3>
+<h3 class="anchored" data-anchor-id="linear-transformation-vs.-change-of-basis">Linear Transformation VS. Change of Basis:</h3>
 <ul>
 <li><p>In a&nbsp;<strong>linear transformation</strong>, the coordinate system (basis) is fixed, and the vector itself is moved, causing its coordinates to change.</p></li>
 <li><p>In a&nbsp;<strong>change of basis</strong>, the vector itself remains fixed, but the coordinate system (the observer’s perspective) changes, so the coordinate values representing the same vector change.</p></li>
 </ul>
 </section>
 <section id="important-application" class="level3">
-<h3 class="anchored" data-anchor-id="important-application"><strong>Important Application</strong></h3>
+<h3 class="anchored" data-anchor-id="important-application">Important Application</h3>
 <p>If a linear transformation <span class="math inline">\(T\)</span> has matrix <span class="math inline">\(A\)</span> in the standard basis, and we want its representation <span class="math inline">\(B\)</span> in another basis <span class="math inline">\(\mathcal{B}\)</span>, we have the <strong>similarity transformation</strong> relation: <span class="math inline">\(B = P^{-1}AP\)</span></p>
 <p>where <span class="math inline">\(P\)</span> is the change of basis matrix (from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis). This allows us to choose a more convenient basis to simplify the description of a transformation.</p>
 </section>
@@ -724,4 +760,5 @@ window.Quarto = {
 
 
 
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
