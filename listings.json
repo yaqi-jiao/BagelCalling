@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Project_Log_01/index.html",
       "/posts/Develop New Feature and Managing Code with Git Feature Branches/index.html",
       "/posts/Understanding Git from a Tree Perspective/index.html",
       "/posts/Course notes_Essence of Linear Algebra Pt2/index.html",
