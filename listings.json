@@ -2,8 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Case_study_03/empty_index_model.html",
       "/posts/Case_Study_02/empty_index_model.html",
-      "/posts/Accelerating Pearson Correlation with NumPy/index.html",
+      "/posts/Case_Study_01/index.html",
       "/posts/Project_Log_01/index.html",
       "/posts/Develop New Feature and Managing Code with Git Feature Branches/index.html",
       "/posts/Understanding Git from a Tree Perspective/index.html",

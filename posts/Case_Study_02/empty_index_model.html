@@ -201,13 +201,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#case-study-how-to-take-parameters-from-input" id="toc-case-study-how-to-take-parameters-from-input" class="nav-link active" data-scroll-target="#case-study-how-to-take-parameters-from-input">Case Study | How to take parameters from input</a>
-  <ul class="collapse">
-  <li><a href="#case" id="toc-case" class="nav-link" data-scroll-target="#case">Case</a></li>
+  <li><a href="#case" id="toc-case" class="nav-link active" data-scroll-target="#case">Case</a></li>
   <li><a href="#study" id="toc-study" class="nav-link" data-scroll-target="#study">Study</a></li>
   <li><a href="#my-usage" id="toc-my-usage" class="nav-link" data-scroll-target="#my-usage">my usage</a></li>
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">takeaways</a></li>
-  </ul></li>
   </ul>
 </nav>
 </nav>
@@ -222,9 +219,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="case-study-how-to-take-parameters-from-input" class="level1">
-<h1>Case Study | How to take parameters from input</h1>
-<p>description: embrace argparse</p>
 <section id="case" class="level3">
 <h3 class="anchored" data-anchor-id="case">Case</h3>
 <p>When I took Python lessons last year, our teacher taught us to use <code>sys.argv</code> to set input parameters instead of using hard-coded values. It worked, but in practice, it quickly became inconvenient.</p>
@@ -305,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="study" class="level3">
 <h3 class="anchored" data-anchor-id="study">Study</h3>
 <section id="some-basic-knowledge" class="level4">
-<h4 class="anchored" data-anchor-id="some-basic-knowledge">some basic knowledge</h4>
+<h4 class="anchored" data-anchor-id="some-basic-knowledge"><strong>1. some basic knowledge</strong></h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># minimal workfolw</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> argparse  <span class="co"># package preparation</span></span>
@@ -325,19 +319,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </section>
 <section id="after-setting-parameters-how-to-extract-them-from-input" class="level4">
-<h4 class="anchored" data-anchor-id="after-setting-parameters-how-to-extract-them-from-input">after setting parameters, how to extract them from input?</h4>
+<h4 class="anchored" data-anchor-id="after-setting-parameters-how-to-extract-them-from-input"><strong>2. after setting parameters, how to extract them from input?</strong></h4>
 <p>After defining arguments using <code>add_argument()</code>, <code>argparse</code> reads the input and maps each argument to a Python attribute.</p>
 <p>For example: <code>--input_dir data/test</code> in CLI becomes <code>args.input_dir == "data/test”</code></p>
 <p>Extraction is done using <code>args = parser.parse_args()</code> , and access via <code>args.parameter_name</code></p>
 </section>
 <section id="how-to-process-complex-path-parameter-from-input" class="level4">
-<h4 class="anchored" data-anchor-id="how-to-process-complex-path-parameter-from-input">how to process complex path parameter from input</h4>
+<h4 class="anchored" data-anchor-id="how-to-process-complex-path-parameter-from-input"><strong>3. how to process complex path parameter from input</strong></h4>
 <p>When dealing with file paths, treating them as plain strings can be error-prone.</p>
 <p>In this case, be careful: she does not define <code>--input_dir</code> in <code>params.py</code>. Instead, she defines another parser in <code>run_summary_one_conn.py</code> and does not reuse <code>params.py</code>.</p>
 <p>This is likely for function separation and path handling. We will discuss this in another case study.</p>
 </section>
 <section id="important-how-to-support-both-configuration-file-and-command-line-parameters" class="level4">
-<h4 class="anchored" data-anchor-id="important-how-to-support-both-configuration-file-and-command-line-parameters">important: how to support both configuration file and command line parameters</h4>
+<h4 class="anchored" data-anchor-id="important-how-to-support-both-configuration-file-and-command-line-parameters"><strong>5. important: how to support both configuration file and command line parameters</strong></h4>
 <p>Example:</p>
 <p><code>parser.add_argument('--model_name', type=str, default=essential_params.get("model_name", "TEST_SIR_baseline_hypertune30000"), help='...')</code></p>
 <p>In this command, the configuration file (in this case, User_input_setting.txt) first replaces the hardcoded fallback and becomes the default value used by argparse. At this stage, the configuration file has already replaced the hardcoded fallback.</p>
@@ -347,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In this design, the configuration file is used to build argparse defaults, while command-line input still has the final control.</p>
 </section>
 <section id="function-or-not" class="level4">
-<h4 class="anchored" data-anchor-id="function-or-not">function or not</h4>
+<h4 class="anchored" data-anchor-id="function-or-not"><strong>6. function or not</strong></h4>
 <p>You may notice that sometimes <code>argparse</code> is used directly in <code>main()</code> (like in <code>run_summary_one_conn.py</code>), while in larger programs it is wrapped into a function.</p>
 <p>This depends on:</p>
 <ul>
@@ -397,7 +391,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR.git">https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR.git</a></p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

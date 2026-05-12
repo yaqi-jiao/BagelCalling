@@ -121,3 +121,13 @@ div.quarto-post .thumbnail img {
 div.quarto-post .metadata {
   display: none !important;
 }
+
+/* add scrolls*/
+.code-scroll {
+  max-height: 360px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8f8f8;
+}
