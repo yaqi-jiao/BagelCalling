@@ -8,8 +8,9 @@
 
 <meta name="author" content="Yaqi Jiao">
 <meta name="dcterms.date" content="2026-03-15">
+<meta name="description" content="A complete Git tutorial (maybe) from receiving requirements to merging and releasing.">
 
-<title>Developing New Features and Managing Code with Git Feature Branches – Bagel Calling</title>
+<title>Case Study | developing new features and managing code with Git feature branches – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -74,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -110,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -129,29 +131,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -160,9 +158,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Developing New Features and Managing Code with Git Feature Branches</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">TIB</div>
+      <h1 class="title">Case Study | developing new features and managing code with Git feature branches</h1>
+                  <div>
+        <div class="description">
+          A complete Git tutorial (maybe) from receiving requirements to merging and releasing.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Case Study</div>
+                <div class="quarto-category">Git</div>
+                <div class="quarto-category">workflow</div>
               </div>
                   </div>
   </div>
@@ -195,20 +200,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#developing-new-features-and-managing-code-with-git-feature-branches" id="toc-developing-new-features-and-managing-code-with-git-feature-branches" class="nav-link active" data-scroll-target="#developing-new-features-and-managing-code-with-git-feature-branches">Developing New Features and Managing Code with Git Feature Branches</a>
-  <ul class="collapse">
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
+  <li><a href="#case" id="toc-case" class="nav-link active" data-scroll-target="#case">Case</a>
   <ul class="collapse">
   <li><a href="#the-concept-of-a-feature" id="toc-the-concept-of-a-feature" class="nav-link" data-scroll-target="#the-concept-of-a-feature">The Concept of a “Feature”</a></li>
   </ul></li>
-  <li><a href="#process-log" id="toc-process-log" class="nav-link" data-scroll-target="#process-log">Process Log</a>
+  <li><a href="#study" id="toc-study" class="nav-link" data-scroll-target="#study">Study</a>
   <ul class="collapse">
-  <li><a href="#modification" id="toc-modification" class="nav-link" data-scroll-target="#modification">Modification</a></li>
+  <li><a href="#modifications" id="toc-modifications" class="nav-link" data-scroll-target="#modifications">Modifications</a></li>
   <li><a href="#push" id="toc-push" class="nav-link" data-scroll-target="#push">Push</a></li>
   <li><a href="#merging-and-releasing" id="toc-merging-and-releasing" class="nav-link" data-scroll-target="#merging-and-releasing">Merging and Releasing</a></li>
   </ul></li>
-  <li><a href="#lessons-learned-large-scale-code-management" id="toc-lessons-learned-large-scale-code-management" class="nav-link" data-scroll-target="#lessons-learned-large-scale-code-management">Lessons Learned: Large-Scale Code Management</a></li>
-  </ul></li>
+  <li><a href="#takeaways-large-scale-code-management" id="toc-takeaways-large-scale-code-management" class="nav-link" data-scroll-target="#takeaways-large-scale-code-management">Takeaways: Large-Scale Code Management</a></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
   </ul>
 </nav>
 </nav>
@@ -223,11 +226,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<section id="developing-new-features-and-managing-code-with-git-feature-branches" class="level1">
-<h1>Developing New Features and Managing Code with Git Feature Branches</h1>
-<p>A complete Git tutorial from receiving requirements to merging and releasing.</p>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
+<section id="case" class="level2">
+<h2 class="anchored" data-anchor-id="case">Case</h2>
 <p>You have just finished an app project that reports ancestral haplogroup information based on the user’s known haplogroup. It has been packaged, tested, and can be installed via <code>pip install</code>. At this point, the product manager / your supervisor / you yourself come up with a new requirement: <strong>add a feature to infer haplogroups directly from raw genotype data.</strong></p>
 <p>The packaged code is already sitting on the <code>main</code> branch. Modifying it directly there carries a high risk of breaking the existing stable version. The correct approach here is to open a new <strong>feature branch</strong>, develop within it, and merge it back to the <code>main</code> branch only after it is stable.</p>
 <p>Below is the complete log of my development process for this new feature, the lessons I learned about Git branching and large-scale code management, and how several bugs were fixed along the way.</p>
@@ -237,53 +237,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Core Rule:</strong> The main branch must <em>always</em> remain in a deployable/releasable state. New features are developed in isolated branches</p>
 </section>
 </section>
-<section id="process-log" class="level2">
-<h2 class="anchored" data-anchor-id="process-log">Process Log</h2>
-<section id="modification" class="level3">
-<h3 class="anchored" data-anchor-id="modification">Modification</h3>
-<ol type="1">
-<li><p><strong>Create and switch to a new branch:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> snp-extraction</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Added some new scripts, modified existing code, and strived to maintain commit atomicity</strong></p>
-<p>related changes are grouped in the same commit, while unrelated changes are committed separately, providing clear <code>commit -m</code> messages.</p></li>
-<li><p><strong>Cleaning Up Unneeded Files</strong></p>
+<section id="study" class="level2">
+<h2 class="anchored" data-anchor-id="study">Study</h2>
+<section id="modifications" class="level3">
+<h3 class="anchored" data-anchor-id="modifications">Modifications</h3>
+<section id="create-and-switch-to-a-new-branch" class="level4">
+<h4 class="anchored" data-anchor-id="create-and-switch-to-a-new-branch">1. Create and switch to a new branch:</h4>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> snp-extraction</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="added-some-new-scripts-modified-existing-code-and-strived-to-maintain-commit-atomicity" class="level4">
+<h4 class="anchored" data-anchor-id="added-some-new-scripts-modified-existing-code-and-strived-to-maintain-commit-atomicity">2. Added some new scripts, modified existing code, and strived to maintain commit atomicity</h4>
+<p>related changes are grouped in the same commit, while unrelated changes are committed separately, providing clear <code>commit -m</code> messages.</p>
+</section>
+<section id="cleaning-up-unneeded-files" class="level4">
+<h4 class="anchored" data-anchor-id="cleaning-up-unneeded-files">3. Cleaning Up Unneeded Files</h4>
 <p>While developing the new feature, I realized some older files were no longer needed. However, since they were already pushed, I couldn’t simply use <code>git reset</code> to delete them.</p>
 <p>I use <code>git rm</code>. The <code>--cached</code> parameter controls whether the file is kept locally:</p>
+<pre><code>-   Some files I wanted to keep on my local machine but remove from Git tracking (`git rm --cached`).
+
+    ![](Fig1.png){fig-align="center" width="\"500”"}
+
+-   Some files I wanted to delete entirely from both GitHub and my local directory (`git rm`). ![This step also deleted the local folder.](Fig2.png){fig-align="center" width="\"500”"}</code></pre>
+</section>
+<section id="updating-dependency-configurations" class="level4">
+<h4 class="anchored" data-anchor-id="updating-dependency-configurations">4. Updating Dependency Configurations</h4>
+<p>I use <code>pyproject.toml</code> for package management. New features might introduce new dependencies, or render old ones obsolete. After a quick check, I found I could actually remove an old dependency, so I deleted it from the <code>dependencies</code> list in <code>pyproject.toml</code> and committed the change.</p>
+</section>
+<section id="local-pip-install-testing" class="level4">
+<h4 class="anchored" data-anchor-id="local-pip-install-testing">5. Local <code>pip install</code> Testing**</h4>
 <ul>
-<li><p>Some files I wanted to keep on my local machine but remove from Git tracking (<code>git rm --cached</code>).</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="Fig1.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div></li>
-<li><p>Some files I wanted to delete entirely from both GitHub and my local directory (<code>git rm</code>). <img src="Fig2.png" class="img-fluid quarto-figure quarto-figure-center" alt="This step also deleted the local folder."></p></li>
-</ul></li>
-<li><p><strong>Updating Dependency Configurations</strong></p>
-<p>I use <code>pyproject.toml</code> for package management. New features might introduce new dependencies, or render old ones obsolete. After a quick check, I found I could actually remove an old dependency, so I deleted it from the <code>dependencies</code> list in <code>pyproject.toml</code> and committed the change.</p></li>
-<li><p><strong>Local <code>pip install</code> Testing</strong></p>
-<ul>
-<li><p><strong>Error Record:</strong> Installing the development version locally using <code>pip install -e .</code> showed a successful installation. However, running the global command <code>mtdna-app</code> resulted in a <code>ModuleNotFoundError</code>. Yet, running <code>python mtDNAmatcher/mtDNAmatcher.py</code> directly worked perfectly fine.</p>
+<li><strong>Error Record:</strong> Installing the development version locally using <code>pip install -e .</code> showed a successful installation. However, running the global command <code>mtdna-app</code> resulted in a <code>ModuleNotFoundError</code>. Yet, running <code>python mtDNAmatcher/mtDNAmatcher.py</code> directly worked perfectly fine.</li>
+</ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig3.png" class="img-fluid figure-img"></p>
 <figcaption>Installed successfully, but python can’t find the scripts</figcaption>
 </figure>
-</div></li>
-<li><p><strong>The Cause:</strong> Because I had run <code>pip install -e</code> previously, the files were already packaged, which altered Python’s lookup path. Running <code>python mtDNAmatcher/mtDNAmatcher.py</code> explicitly guides Python to the current directory. But when running the packaged <code>mtdna-app</code> command, Python searches globally/from the project root, causing a path mismatch.</p></li>
+</div>
+<ul>
+<li><strong>The Cause:</strong> Because I had run <code>pip install -e</code> previously, the files were already packaged, which altered Python’s lookup path. Running <code>python mtDNAmatcher/mtDNAmatcher.py</code> explicitly guides Python to the current directory. But when running the packaged <code>mtdna-app</code> command, Python searches globally/from the project root, causing a path mismatch.</li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig4.png" class="img-fluid figure-img"></p>
 <figcaption>Solution</figcaption>
 </figure>
-</div></li>
-</ol>
+</div>
+</section>
 </section>
 <section id="push" class="level3">
 <h3 class="anchored" data-anchor-id="push">Push</h3>
-<ol type="1">
-<li><p><strong>Push the branch to the remote repository</strong> after successful local installation and testing: <code>git push origin snp-extraction</code></p></li>
-<li><p><strong>Clean Install Test (via Clone)</strong></p>
+<section id="push-the-branch-to-the-remote-repository" class="level4">
+<h4 class="anchored" data-anchor-id="push-the-branch-to-the-remote-repository">1. Push the branch to the remote repository</h4>
+<p>after successful local installation and testing: <code>git push origin snp-extraction</code></p>
+</section>
+<section id="clean-install-test-via-clone" class="level4">
+<h4 class="anchored" data-anchor-id="clean-install-test-via-clone">2. Clean Install Test (via Clone)</h4>
 <ul>
 <li><strong>Error Record 1:</strong> Because I used the <code>--cached</code> parameter with <code>git rm</code> earlier, the unneeded old files were kept locally. During my local tests, the app was actually still running the old files, masking potential issues.</li>
 <li><strong>Error Record 2:</strong> My testing environment wasn’t “clean” enough. I accidentally cloned the repository inside <em>another</em> existing Git repository (a nested Git repo trap), causing pathing and pulling issues.</li>
@@ -293,50 +302,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="Fig5.png" class="img-fluid figure-img"></p>
 <figcaption>Clone and installed successfully, but the test directory is under another git repository, use <code>*git remote set-url origin</code>* to switch to another one.</figcaption>
 </figure>
-</div></li>
-<li><p><strong>Pulling the Latest Code:</strong> <code>git pull origin snp-extraction</code></p></li>
-<li><p><strong>Iterative testing continued until the feature was completely stable.</strong></p></li>
-</ol>
+</div>
+</section>
+<section id="pulling-the-latest-code-through-git-pull-origin-snp-extraction" class="level4">
+<h4 class="anchored" data-anchor-id="pulling-the-latest-code-through-git-pull-origin-snp-extraction">3. Pulling the Latest Code through <code>git pull origin snp-extraction</code></h4>
+</section>
+<section id="iterative-testing-continued-until-the-feature-was-completely-stable." class="level4">
+<h4 class="anchored" data-anchor-id="iterative-testing-continued-until-the-feature-was-completely-stable.">4. Iterative testing continued until the feature was completely stable.</h4>
+</section>
 </section>
 <section id="merging-and-releasing" class="level3">
 <h3 class="anchored" data-anchor-id="merging-and-releasing">Merging and Releasing</h3>
-<p>After pushing, the repository homepage on GitHub displays a prompt: <em>“snp-extraction had recent pushes”</em> and asks if you want to <strong>Compare &amp; pull request</strong>. <img src="Fig6.png" class="img-fluid quarto-figure quarto-figure-center" alt="GitHub repository homepage after pushing the snp-extraction branch"></p>
-<ol type="1">
-<li><p><strong>Initiate a Pull Request (PR) on GitHub.</strong></p></li>
-<li><p><strong>On the PR page to review all modifications</strong>, and Github will detect conflict automatically. Add some descriptions for this merge.</p>
+<p>After pushing, the repository homepage on GitHub displays a prompt: <em>“snp-extraction had recent pushes”</em> and asks if you want to <strong>Compare &amp; pull request</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Fig6.png" class="img-fluid figure-img"></p>
+<figcaption>GitHub repository homepage after pushing the snp-extraction branch</figcaption>
+</figure>
+</div>
+<section id="initiate-a-pull-request-pr-on-github." class="level4">
+<h4 class="anchored" data-anchor-id="initiate-a-pull-request-pr-on-github.">1. Initiate a Pull Request (PR) on GitHub.</h4>
+</section>
+<section id="on-the-pr-page-to-review-all-modifications" class="level4">
+<h4 class="anchored" data-anchor-id="on-the-pr-page-to-review-all-modifications">2. On the PR page to review all modifications</h4>
+<p>Github will detect conflict automatically. Add some descriptions for this merge.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig7.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
-</div></li>
-<li><p><strong>Once confirmed, click Merge pull request.</strong></p>
+</div>
+</section>
+<section id="once-confirmed-click-merge-pull-request." class="level4">
+<h4 class="anchored" data-anchor-id="once-confirmed-click-merge-pull-request.">3. Once confirmed, click Merge pull request.</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig8.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
-</div></li>
-<li><p><strong>Delete the feature branch after merging to keep the repo clean.</strong></p>
+</div>
+</section>
+<section id="delete-the-feature-branch-after-merging-to-keep-the-repo-clean." class="level4">
+<h4 class="anchored" data-anchor-id="delete-the-feature-branch-after-merging-to-keep-the-repo-clean.">4. Delete the feature branch after merging to keep the repo clean.</h4>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig9.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p><strong>Optional:</strong> Command-line operations</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge snp-extraction</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
-<li><p><strong>Add release information and version</strong> After merging, the main branch now contains the new feature. At this point, you can navigate to the repository’s homepage, click <strong>Releases -&gt; Draft a new release</strong>, fill in the version tag (e.g., <code>v1.0.0</code>) and release notes, and click publish</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> pull origin main</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge snp-extraction</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="add-release-information-and-version" class="level4">
+<h4 class="anchored" data-anchor-id="add-release-information-and-version">5. Add release information and version</h4>
+<p>After merging, the main branch now contains the new feature. At this point, you can navigate to the repository’s homepage, click <strong>Releases -&gt; Draft a new release</strong>, fill in the version tag (e.g., <code>v1.0.0</code>) and release notes, and click publish</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Fig10.png" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
-</div></li>
-</ol>
+</div>
 </section>
 </section>
-<section id="lessons-learned-large-scale-code-management" class="level2">
-<h2 class="anchored" data-anchor-id="lessons-learned-large-scale-code-management">Lessons Learned: Large-Scale Code Management</h2>
+</section>
+<section id="takeaways-large-scale-code-management" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways-large-scale-code-management">Takeaways: Large-Scale Code Management</h2>
 <p><strong>Git Branch Management Strategy:</strong> The standard “Git Flow” defines five main types of branches, all centered around the core concept of version releases</p>
 <ul>
 <li><p><strong>Feature:</strong> Used for developing new functionalities for an upcoming release. Ideally, each commit should contain an independent, complete change. Modifications should <em>only</em> happen in the corresponding feature branch to prevent conflicts.</p>
@@ -354,14 +383,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>Source: Vincent Driessen, <em>“A successful Git branching model”</em>&nbsp;</figcaption>
 </figure>
 </div>
-<p><strong>Reference</strong></p>
-<ol type="1">
+</section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference">Reference</h2>
+<ul>
 <li>Git Flow(Classic Branch Model): <a href="https://nvie.com/posts/a-successful-git-branching-model/">A successful Git branching model</a></li>
 <li>Official GitHub Flow: <a href="https://docs.github.com/en/get-started/using-github/github-flow">Official GitHub document (GitHub Flow)</a></li>
-</ol>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

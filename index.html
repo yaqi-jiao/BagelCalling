@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Welcome to Bagel Calling – Bagel Calling</title>
+<title>Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,20 +73,20 @@ ul.task-list li input[type="checkbox"] {
 <script>
 
   window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    const listingTargetEl = window.document.querySelector('#listing-bagel-posts .list');
     if (!listingTargetEl) {
       // No listing discovered, do not attach.
       return; 
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-date','listing-title','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
       searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
+    window['quarto-listings']['listing-bagel-posts'] = new List('listing-bagel-posts', options);
 
     if (window['quarto-listing-loaded']) {
       window['quarto-listing-loaded']();
@@ -100,13 +100,6 @@ ul.task-list li input[type="checkbox"] {
   })
   </script>
 <style>html{ scroll-behavior: smooth; }</style>
-<style>
-
-      .quarto-title-block .quarto-title-banner {
-        background-image: url(./Header.jpg);
-background-size: cover;
-      }
-</style>
 <meta name="google-site-verification" content="Af3bat6aunjq4Tbs1orKkNnYRpFbNTp9f-8lZqVr0NQ">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
@@ -140,12 +133,13 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="code.css">
 </head>
 
-<body class="floating nav-fixed quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
@@ -159,88 +153,210 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">Welcome to Bagel Calling</h1>
-            <p class="subtitle lead">Pick one bagel that interests you;)</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta column-page-left">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
-  
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="TWlzYw==">Misc <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VElC">TIB <span class="quarto-category-count">(5)</span></div><div class="category" data-category="VElG">TIF <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VElM">TIL <span class="quarto-category-count">(5)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#articles" id="toc-articles" class="nav-link active" data-scroll-target="#articles">Articles</a></li>
+  </ul>
+</nav>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(12)</span></div><div class="category" data-category="Q2FzZSUyMFN0dWR5">Case Study <span class="quarto-category-count">(5)</span></div><div class="category" data-category="Q29ubmVjdG9tZQ==">Connectome <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2l0">Git <span class="quarto-category-count">(3)</span></div><div class="category" data-category="TWF0aGVtYXRpY3M=">Mathematics <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWlzYw==">Misc <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TnVtcHk=">Numpy <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHJvamVjdCUyMExvZw==">Project Log <span class="quarto-category-count">(1)</span></div><div class="category" data-category="cHl0aG9u">python <span class="quarto-category-count">(4)</span></div><div class="category" data-category="U3RhdGlzdGljcw==">Statistics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="U3R1ZHklMjBOb3Rlcw==">Study Notes <span class="quarto-category-count">(5)</span></div><div class="category" data-category="d29ya2Zsb3c=">workflow <span class="quarto-category-count">(7)</span></div></div></div>
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bagel Calling</h1>
+<p class="subtitle lead">Thoughts on research, programming, papers, and whatever else catches my attention.</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="articles" class="level2">
+<h2 class="anchored" data-anchor-id="articles">Articles</h2>
+<div class="blog-type-filter" aria-label="Filter posts by article type">
+<p><span class="filter-chip active" data-filter="all">All</span> <span class="filter-chip" data-filter="case study">Case Study</span> <span class="filter-chip" data-filter="project log">Project Log</span> <span class="filter-chip" data-filter="paper newsletter">Paper Newsletter</span> <span class="filter-chip" data-filter="misc">MISC</span></p>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const typeNames = ["case study", "project log", "paper newsletter", "misc"];
+  const listing = document.querySelector("#bagel-posts, .quarto-listing");
+  if (!listing) return;
+
+  const normalize = (text) => (text || "").trim().toLowerCase();
+
+  const parseDateText = (dateText) => {
+    const cleaned = (dateText || "").replace(/\s+/g, " ").trim();
+    const parsed = new Date(cleaned);
+    return Number.isNaN(parsed.getTime()) ? null : parsed;
+  };
+
+  const getDateText = (post) => {
+    const candidates = [
+      ".listing-date",
+      ".metadata-value",
+      ".metadata .date",
+      ".metadata",
+      "time"
+    ];
+    for (const selector of candidates) {
+      const el = post.querySelector(selector);
+      if (el && el.textContent.trim()) return el.textContent.trim();
+    }
+    return "";
+  };
+
+  const getMonthKey = (post) => {
+    const date = parseDateText(getDateText(post));
+    if (!date) return "UNDATED";
+    return date.toLocaleDateString("en-US", { month: "long", year: "numeric" }).toUpperCase();
+  };
+
+  const getCategories = (post) => {
+    return Array.from(post.querySelectorAll(".listing-category"))
+      .map((el) => el.textContent.trim())
+      .filter(Boolean);
+  };
+
+  const posts = Array.from(listing.querySelectorAll("div.quarto-post"));
+  if (!posts.length) return;
+
+  posts.forEach((post) => {
+    post.classList.add("bagel-compact-post");
+
+    const categories = getCategories(post);
+    const postType = categories.find((cat) => typeNames.includes(normalize(cat))) || "";
+    post.dataset.postType = normalize(postType) || "misc";
+
+    post.querySelectorAll(".listing-category").forEach((cat) => {
+      if (normalize(cat.textContent) === normalize(postType)) {
+        cat.classList.add("article-type");
+      }
+    });
+
+    const body = post.querySelector(".body") || post;
+    const title = body.querySelector(".listing-title");
+    const desc = body.querySelector(".listing-description");
+    if (title && desc && !body.querySelector(".article-line")) {
+      const line = document.createElement("div");
+      line.className = "article-line";
+      title.parentNode.insertBefore(line, title);
+      line.appendChild(title);
+      line.appendChild(desc);
+    }
+  });
+
+  const groups = new Map();
+  posts.forEach((post) => {
+    const key = getMonthKey(post);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(post);
+  });
+
+  const grouped = document.createElement("div");
+  grouped.className = "month-feed";
+
+  groups.forEach((monthPosts, month) => {
+    const section = document.createElement("section");
+    section.className = "month-block";
+
+    const header = document.createElement("h3");
+    header.className = "month-heading";
+    header.textContent = month;
+    section.appendChild(header);
+
+    const rows = document.createElement("div");
+    rows.className = "month-rows";
+    monthPosts.forEach((post) => rows.appendChild(post));
+    section.appendChild(rows);
+    grouped.appendChild(section);
+  });
+
+  listing.appendChild(grouped);
+
+  const chips = document.querySelectorAll(".filter-chip");
+  chips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      chips.forEach((c) => c.classList.remove("active"));
+      chip.classList.add("active");
+      const filter = normalize(chip.dataset.filter);
+
+      document.querySelectorAll(".month-block").forEach((section) => {
+        let visibleCount = 0;
+        section.querySelectorAll("div.quarto-post").forEach((post) => {
+          const show = filter === "all" || post.dataset.postType === filter;
+          post.hidden = !show;
+          if (show) visibleCount++;
+        });
+        section.hidden = visibleCount === 0;
+      });
+    });
+  });
+});
+</script>
 
 
 
+</section>
 
-
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="quarto-listing quarto-listing-container-default" id="listing-bagel-posts">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="VElC" data-listing-date-sort="1780005600000" data-listing-file-modified-sort="1780057181329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2094">
-<div class="thumbnail"><a href="./posts/Case_study_04/index_model.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="0" data-categories="Q2FzZSUyMFN0dWR5JTJDcHl0aG9uJTJDd29ya2Zsb3c=" data-listing-date-sort="1779984000000" data-listing-file-modified-sort="1782545152439" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2197">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Case_study_04/index_model.html" class="no-external">Case Study | Following Metadata Through a Scientific Python Project</a>
+<a href="./posts/Case_study_04/index_model.html" class="no-external">Case Study | following metadata through a scientific python project</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElC'); return false;">TIB</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FzZSUyMFN0dWR5'); return false;">Case Study</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Case_study_04/index_model.html" class="no-external">
-<p>How a large Python project uses <code>args</code>, paths, and object state to organize experiment metadata and workflow results.</p>
+<p>How a large Python project uses args, paths, and object state to organize experiment metadata and workflow results.</p>
 </a></div>
 </div>
 <div class="metadata">
@@ -248,85 +364,75 @@ window.Quarto = {
 <div class="listing-date">
 May 29, 2026
 </div>
-<div class="listing-author">
-Yaqi Jiao
-</div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-categories="VElC" data-listing-date-sort="1778536800000" data-listing-file-modified-sort="1778575964269" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2016">
-<div class="thumbnail"><a href="./posts/Case_study_03/empty_index_model.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="1" data-categories="Q2FzZSUyMFN0dWR5JTJDcHl0aG9uJTJDd29ya2Zsb3c=" data-listing-date-sort="1778515200000" data-listing-file-modified-sort="1782544286270" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="13" data-listing-word-count-sort="2584">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Case_study_03/empty_index_model.html" class="no-external">Case Study | How to organize output paths automatically</a>
+<a href="./posts/Case_study_03/index_model.html" class="no-external">Case Study | how to organize output paths automatically</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElC'); return false;">TIB</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FzZSUyMFN0dWR5'); return false;">Case Study</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/Case_study_03/empty_index_model.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/Case_study_03/index_model.html" class="no-external">
 <p>Useful ideas for saving and organizing results more systematically.</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Case_study_03/empty_index_model.html" class="no-external">
+<a href="./posts/Case_study_03/index_model.html" class="no-external">
 <div class="listing-date">
 May 12, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="2" data-categories="VElC" data-listing-date-sort="1777932000000" data-listing-file-modified-sort="1778576222926" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1002">
-<div class="thumbnail"><a href="./posts/Case_Study_02/empty_index_model.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="2" data-categories="Q2FzZSUyMFN0dWR5JTJDcHl0aG9uJTJDd29ya2Zsb3c=" data-listing-date-sort="1777910400000" data-listing-file-modified-sort="1782543955729" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1122">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Case_Study_02/empty_index_model.html" class="no-external">Case Study | How to take parameters from input</a>
+<a href="./posts/Case_Study_02/index_model.html" class="no-external">Case Study | how to take parameters from input</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElC'); return false;">TIB</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FzZSUyMFN0dWR5'); return false;">Case Study</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
-<div class="delink listing-description"><a href="./posts/Case_Study_02/empty_index_model.html" class="no-external">
+<div class="delink listing-description"><a href="./posts/Case_Study_02/index_model.html" class="no-external">
 <p>embrace argparse</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="./posts/Case_Study_02/empty_index_model.html" class="no-external">
+<a href="./posts/Case_Study_02/index_model.html" class="no-external">
 <div class="listing-date">
 May 5, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="3" data-categories="VElC" data-listing-date-sort="1775599200000" data-listing-file-modified-sort="1778577514595" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="829">
-<div class="thumbnail"><a href="./posts/Case_Study_01/index.html" class="no-external">
-
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
-
-</a></div>
+<div class="quarto-post image-right" data-index="3" data-categories="Q2FzZSUyMFN0dWR5JTJDcHl0aG9uJTJDd29ya2Zsb3clMkNOdW1weQ==" data-listing-date-sort="1775577600000" data-listing-file-modified-sort="1782543715238" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="851">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Case_Study_01/index.html" class="no-external">Case Study | Accelerating Pearson Correlation with NumPy</a>
+<a href="./posts/Case_Study_01/index.html" class="no-external">Case Study | accelerating pearson correlation with NumPy</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElC'); return false;">TIB</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FzZSUyMFN0dWR5'); return false;">Case Study</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('cHl0aG9u'); return false;">python</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TnVtcHk='); return false;">Numpy</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Case_Study_01/index.html" class="no-external">
@@ -336,27 +442,21 @@ Yaqi Jiao
 <div class="metadata">
 <a href="./posts/Case_Study_01/index.html" class="no-external">
 <div class="listing-date">
-Apr 8, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+April 8, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="4" data-categories="VElG" data-listing-date-sort="1774738800000" data-listing-file-modified-sort="1774788335843" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2273">
-<div class="thumbnail"><a href="./posts/Project_Log_01/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Project_Log_01/header.jpg" class="thumbnail-image">
-
-</a></div>
+<div class="quarto-post image-right" data-index="4" data-categories="UHJvamVjdCUyMExvZyUyQ0Nvbm5lY3RvbWU=" data-listing-date-sort="1774713600000" data-listing-file-modified-sort="1782549266015" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="12" data-listing-word-count-sort="2273">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/Project_Log_01/index.html" class="no-external">Project Log | From Zero to Connectome</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElG'); return false;">TIF</div>
+<div class="listing-category" onclick="window.quartoListingCategory('UHJvamVjdCUyMExvZw=='); return false;">Project Log</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('Q29ubmVjdG9tZQ=='); return false;">Connectome</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Project_Log_01/index.html" class="no-external">
@@ -366,57 +466,49 @@ Yaqi Jiao
 <div class="metadata">
 <a href="./posts/Project_Log_01/index.html" class="no-external">
 <div class="listing-date">
-Mar 29, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+March 29, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="5" data-categories="VElC" data-listing-date-sort="1773529200000" data-listing-file-modified-sort="1773649791548" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1274">
-<div class="thumbnail"><a href="./posts/Develop New Feature and Managing Code with Git Feature Branches/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\Develop New Feature and Managing Code with Git Feature Branches\Fig1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
+<div class="quarto-post image-right" data-index="5" data-categories="Q2FzZSUyMFN0dWR5JTJDR2l0JTJDd29ya2Zsb3c=" data-listing-date-sort="1773504000000" data-listing-file-modified-sort="1782547066888" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1053">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Develop New Feature and Managing Code with Git Feature Branches/index.html" class="no-external">Developing New Features and Managing Code with Git Feature Branches</a>
+<a href="./posts/Develop New Feature and Managing Code with Git Feature Branches/index.html" class="no-external">Case Study | developing new features and managing code with Git feature branches</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElC'); return false;">TIB</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2FzZSUyMFN0dWR5'); return false;">Case Study</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Develop New Feature and Managing Code with Git Feature Branches/index.html" class="no-external">
-A complete Git tutorial from receiving requirements to merging and releasing.
+<p>A complete Git tutorial (maybe) from receiving requirements to merging and releasing.</p>
 </a></div>
 </div>
 <div class="metadata">
 <a href="./posts/Develop New Feature and Managing Code with Git Feature Branches/index.html" class="no-external">
 <div class="listing-date">
-Mar 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+March 15, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="6" data-categories="VElM" data-listing-date-sort="1771801200000" data-listing-file-modified-sort="1771854488403" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1945">
-<div class="thumbnail"><a href="./posts/Understanding Git from a Tree Perspective/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\Understanding Git from a Tree Perspective\HEAD~.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
+<div class="quarto-post image-right" data-index="6" data-categories="U3R1ZHklMjBOb3RlcyUyQ0dpdCUyQ3dvcmtmbG93" data-listing-date-sort="1771776000000" data-listing-file-modified-sort="1782549152594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1971">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Understanding Git from a Tree Perspective/index.html" class="no-external">Understanding Git from a Tree Perspective: Commits, Branches, and Refactoring</a>
+<a href="./posts/Understanding Git from a Tree Perspective/index.html" class="no-external">Study Notes | understanding Git from a tree perspective: commits, branches, and refactoring</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3R1ZHklMjBOb3Rlcw=='); return false;">Study Notes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Understanding Git from a Tree Perspective/index.html" class="no-external">
@@ -426,27 +518,21 @@ Yaqi Jiao
 <div class="metadata">
 <a href="./posts/Understanding Git from a Tree Perspective/index.html" class="no-external">
 <div class="listing-date">
-Feb 23, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+February 23, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="7" data-categories="VElM" data-listing-date-sort="1771110000000" data-listing-file-modified-sort="1771851277615" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1299">
-<div class="thumbnail"><a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\Course notes_Essence of Linear Algebra Pt2\dotproduct_concept.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
+<div class="quarto-post image-right" data-index="7" data-categories="U3R1ZHklMjBOb3RlcyUyQ01hdGhlbWF0aWNz" data-listing-date-sort="1771084800000" data-listing-file-modified-sort="1782547004501" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1273">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">Course note: Essence of Linear Algebra, Pt.2</a>
+<a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">Study Notes | Essence of Linear Algebra, Pt.2</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3R1ZHklMjBOb3Rlcw=='); return false;">Study Notes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWF0aGVtYXRpY3M='); return false;">Mathematics</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
@@ -456,57 +542,45 @@ Yaqi Jiao
 <div class="metadata">
 <a href="./posts/Course notes_Essence of Linear Algebra Pt2/index.html" class="no-external">
 <div class="listing-date">
-Feb 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+February 15, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="8" data-categories="VElM" data-listing-date-sort="1770591600000" data-listing-file-modified-sort="1771851506329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1341">
-<div class="thumbnail"><a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/Course notes_Essence of Linear Algebra Pt1/BagelScene.png" class="thumbnail-image">
-
-</a></div>
+<div class="quarto-post image-right" data-index="8" data-categories="U3R1ZHklMjBOb3RlcyUyQ01hdGhlbWF0aWNz" data-listing-date-sort="1770566400000" data-listing-file-modified-sort="1782547045106" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1392">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">Course note: Essence of Linear Algebra, Pt.1</a>
+<a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">Study Notes | Essence of Linear Algebra, Pt.1</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3R1ZHklMjBOb3Rlcw=='); return false;">Study Notes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWF0aGVtYXRpY3M='); return false;">Mathematics</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
-<p>The cover image pays tribute to the essence of linear algebra.</p>
+<p>The header image pays tribute to the essence of linear algebra.</p>
 </a></div>
 </div>
 <div class="metadata">
 <a href="./posts/Course notes_Essence of Linear Algebra Pt1/index.html" class="no-external">
 <div class="listing-date">
-Feb 9, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+February 9, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="9" data-categories="VElM" data-listing-date-sort="1769554800000" data-listing-file-modified-sort="1769942972113" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
-<div class="thumbnail"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/How to report your data analysis properly/beta.jpg" class="thumbnail-image">
-
-</a></div>
+<div class="quarto-post image-right" data-index="9" data-categories="U3R1ZHklMjBOb3RlcyUyQ1N0YXRpc3RpY3M=" data-listing-date-sort="1769529600000" data-listing-file-modified-sort="1782547115426" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="673">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/How to report your data analysis properly/index.html" class="no-external">How to present statistical analysis results properly?</a>
+<a href="./posts/How to report your data analysis properly/index.html" class="no-external">Study Notes | how to present statistical analysis results properly</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3R1ZHklMjBOb3Rlcw=='); return false;">Study Notes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('U3RhdGlzdGljcw=='); return false;">Statistics</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/How to report your data analysis properly/index.html" class="no-external">
@@ -516,50 +590,38 @@ Yaqi Jiao
 <div class="metadata">
 <a href="./posts/How to report your data analysis properly/index.html" class="no-external">
 <div class="listing-date">
-Jan 28, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+January 28, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="10" data-categories="VElM" data-listing-date-sort="1769036400000" data-listing-file-modified-sort="1769859124402" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="654">
-<div class="thumbnail"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-
-<img loading="lazy" src="./posts/How to maintain Git and your local code/CoverImage.jpg" class="thumbnail-image">
-
-</a></div>
+<div class="quarto-post image-right" data-index="10" data-categories="U3R1ZHklMjBOb3RlcyUyQ0dpdCUyQ3dvcmtmbG93" data-listing-date-sort="1769011200000" data-listing-file-modified-sort="1782547083744" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="667">
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">How to Maintain Git and Your Local Code?</a>
+<a href="./posts/How to maintain Git and your local code/index.html" class="no-external">Study Notes | how to maintain Git and your local code</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('VElM'); return false;">TIL</div>
+<div class="listing-category" onclick="window.quartoListingCategory('U3R1ZHklMjBOb3Rlcw=='); return false;">Study Notes</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('R2l0'); return false;">Git</div>
+
+<div class="listing-category" onclick="window.quartoListingCategory('d29ya2Zsb3c='); return false;">workflow</div>
 
 </div>
 <div class="delink listing-description"><a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
-<p>Git add, git commit, git push. <br>Just like how you put an elephant into the firdge.</p>
+<p>git add, git commit, git push. <br>Just like how you put an elephant into the firdge.</p>
 </a></div>
 </div>
 <div class="metadata">
 <a href="./posts/How to maintain Git and your local code/index.html" class="no-external">
 <div class="listing-date">
-Jan 22, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+January 22, 2026
 </div>
 </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="11" data-categories="TWlzYw==" data-listing-date-sort="1768431600000" data-listing-file-modified-sort="1769859124406" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="321">
-<div class="thumbnail"><a href="./posts/When the bagel calls/index.html" class="no-external">
-
-<p class="card-img-top"><img src="posts\When the bagel calls\BagelUniverse.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
+<div class="quarto-post image-right" data-index="11" data-categories="TWlzYw==" data-listing-date-sort="1768406400000" data-listing-file-modified-sort="1782546210037" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="305">
 <div class="body">
 <h3 class="no-anchor listing-title">
 <a href="./posts/When the bagel calls/index.html" class="no-external">When the Bagel Calls</a>
@@ -570,16 +632,13 @@ Yaqi Jiao
 
 </div>
 <div class="delink listing-description"><a href="./posts/When the bagel calls/index.html" class="no-external">
-The best time to start a tech blog was ten years ago. The second-best time is now.
+<p>The best time to start a tech blog was ten years ago. The second-best time is now.</p>
 </a></div>
 </div>
 <div class="metadata">
 <a href="./posts/When the bagel calls/index.html" class="no-external">
 <div class="listing-date">
-Jan 15, 2026
-</div>
-<div class="listing-author">
-Yaqi Jiao
+January 15, 2026
 </div>
 </a>
 </div>

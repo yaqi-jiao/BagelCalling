@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2026-04-08">
 <meta name="description" content="About how I use NumPy to speed up Pearson correlation">
 
-<title>Case Study | Accelerating Pearson Correlation with NumPy – Bagel Calling</title>
+<title>Case Study | accelerating pearson correlation with NumPy – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -140,6 +140,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -159,29 +160,25 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -190,14 +187,17 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Case Study | Accelerating Pearson Correlation with NumPy</h1>
+      <h1 class="title">Case Study | accelerating pearson correlation with NumPy</h1>
                   <div>
         <div class="description">
           About how I use NumPy to speed up Pearson correlation
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIB</div>
+                <div class="quarto-category">Case Study</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">workflow</div>
+                <div class="quarto-category">Numpy</div>
               </div>
                   </div>
   </div>
@@ -237,13 +237,7 @@ window.Quarto = {
   <li><a href="#pearson-correlation-as-z-score-multiplication" id="toc-pearson-correlation-as-z-score-multiplication" class="nav-link" data-scroll-target="#pearson-correlation-as-z-score-multiplication">2. Pearson correlation as Z-Score Multiplication</a></li>
   <li><a href="#numpy-broadcasting." id="toc-numpy-broadcasting." class="nav-link" data-scroll-target="#numpy-broadcasting.">3. NumPy broadcasting.</a></li>
   </ul></li>
-  <li><a href="#my-optimized-numpy-version" id="toc-my-optimized-numpy-version" class="nav-link" data-scroll-target="#my-optimized-numpy-version">My Optimized NumPy version</a>
-  <ul class="collapse">
-  <li><a href="#improvements" id="toc-improvements" class="nav-link" data-scroll-target="#improvements">1. Improvements</a></li>
-  <li><a href="#why-this-optimization-works" id="toc-why-this-optimization-works" class="nav-link" data-scroll-target="#why-this-optimization-works">2. Why this optimization works</a></li>
-  <li><a href="#the-new-code-is-faster-because" id="toc-the-new-code-is-faster-because" class="nav-link" data-scroll-target="#the-new-code-is-faster-because">3. The new code is faster because:</a></li>
-  <li><a href="#note" id="toc-note" class="nav-link" data-scroll-target="#note">4. Note</a></li>
-  </ul></li>
+  <li><a href="#my-optimized-numpy-version" id="toc-my-optimized-numpy-version" class="nav-link" data-scroll-target="#my-optimized-numpy-version">My Optimized NumPy version</a></li>
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
   </ul>
 </nav>
@@ -304,7 +298,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="understanding-the-data-shape">1. Understanding the Data Shape</h3>
 <p>We work with three types of data:</p>
 <section id="all_raw_matrices" class="level4">
-<h4 class="anchored" data-anchor-id="all_raw_matrices"><strong>1) <code>all_raw_matrices</code></strong></h4>
+<h4 class="anchored" data-anchor-id="all_raw_matrices"><code>all_raw_matrices</code></h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> gzip.<span class="bu">open</span>(<span class="st">"Simulated_data_simulation.npy"</span>, <span class="st">'rb'</span>) <span class="im">as</span> f:</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    all_raw_matrices <span class="op">=</span> np.load(f)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -329,7 +323,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="y_obs" class="level4">
-<h4 class="anchored" data-anchor-id="y_obs"><strong>2) <code>y_obs</code></strong></h4>
+<h4 class="anchored" data-anchor-id="y_obs"><code>y_obs</code></h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y_obs <span class="op">=</span> np.load(<span class="st">"Y_observed.npy"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(y_obs))</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Observed vector shape: </span><span class="sc">{</span>y_obs<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
@@ -341,7 +335,7 @@ window.Quarto = {
 </ul>
 </section>
 <section id="combinations" class="level4">
-<h4 class="anchored" data-anchor-id="combinations"><strong>3) <code>combinations</code></strong></h4>
+<h4 class="anchored" data-anchor-id="combinations"><code>combinations</code></h4>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'hyperparameters_model_performance_simulation.pkl'</span>, <span class="st">'rb'</span>) <span class="im">as</span> f:</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    combinations <span class="op">=</span> pickle.load(f)[epi][<span class="st">'combinations'</span>]</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -389,19 +383,20 @@ window.Quarto = {
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        sim_z <span class="op">=</span> (current_matrix <span class="op">-</span> sim_mean) <span class="op">/</span> sim_std  <span class="co"># standardize the whole simulation matrix at once</span></span>
 <span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        r_values <span class="op">=</span> np.mean(y_obs_z[:, <span class="va">None</span>] <span class="op">*</span> sim_z, axis<span class="op">=</span><span class="dv">0</span>)  <span class="co"># compute Pearson R across time points</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        r_values <span class="op">=</span> np.nan_to_num(r_values, nan<span class="op">=</span><span class="fl">0.0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<section id="improvements" class="level3">
-<h3 class="anchored" data-anchor-id="improvements">1. Improvements</h3>
-<ol type="1">
-<li><p><strong>Precompute observed z-score once</strong>: <code>y_obs</code> does not depend on hyperparameters, so standardizing it outside the loop avoids repeated computation.</p></li>
-<li><p><strong>Replace <code>pearsonr</code> with manual vectorized computation</strong>. Compute Pearson correlation manually using NumPy operations to avoid repeated function calls.</p></li>
-<li><p><strong>Use broadcasting for column-wise standardization</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sim_z <span class="op">=</span> (current_matrix <span class="op">-</span> sim_mean) <span class="op">/</span> sim_std</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>This standardizes each column (time step) independently, all at once.</p></li>
-<li><p><strong>Minimize Python loops</strong>: Push heavy computations into NumPy array operations for better performance.</p></li>
-</ol>
+<section id="improvements" class="level4">
+<h4 class="anchored" data-anchor-id="improvements">1. Improvements</h4>
+<p><strong>Precompute observed z-score once:</strong> <code>y_obs</code> does not depend on hyperparameters, so standardizing it outside the loop avoids repeated computation.</p>
+<p><strong>Replace <code>pearsonr</code> with manual vectorized computation:</strong> Compute Pearson correlation manually using NumPy operations to avoid repeated function calls.</p>
+<p><strong>Use broadcasting for column-wise standardization:</strong></p>
+<pre><code>``` python
+sim_z = (current_matrix - sim_mean) / sim_std
+```
+
+This standardizes each column (time step) independently, all at once.</code></pre>
+<p><strong>Minimize Python loops:</strong>: Push heavy computations into NumPy array operations for better performance.</p>
 </section>
-<section id="why-this-optimization-works" class="level3">
-<h3 class="anchored" data-anchor-id="why-this-optimization-works">2. Why this optimization works</h3>
+<section id="why-this-optimization-works" class="level4">
+<h4 class="anchored" data-anchor-id="why-this-optimization-works">2. Why this optimization works</h4>
 <p>Pearson correlation can be written as the mean of the product of standardized variables (after z-score normalization):</p>
 <p><span class="math inline">\(R = \frac{1}{n} \sum_{i=1}^{n}
 \left( \frac{x_i - \mu_x}{\sigma_x} \right)
@@ -410,16 +405,16 @@ z^{\mathrm{obs}}_i \cdot z^{\mathrm{sim}}_i = \mathbb{E}[z_x \cdot z_y]\)</span>
 <p>So after z-scoring, no need for covariance or division, just multiply two z-score vectors and then take the mean using <code>np.mean(y_obs_z[:, None] * sim_z, axis=0)</code></p>
 <p>In other words, we are measuring how similar the <strong>spatial pattern across brain regions</strong> is between observed data and simulation at each time point.</p>
 </section>
-<section id="the-new-code-is-faster-because" class="level3">
-<h3 class="anchored" data-anchor-id="the-new-code-is-faster-because">3. The new code is faster because:</h3>
+<section id="the-new-code-is-faster-because" class="level4">
+<h4 class="anchored" data-anchor-id="the-new-code-is-faster-because">3. The new code is faster because:</h4>
 <ol type="1">
 <li>Column-wise stats are computed in bulk. <code>np.mean(..., axis=0)</code> and <code>np.std(...)</code> operate on all time steps at once</li>
 <li>Broadcasting <strong>avoids manual Python loops</strong></li>
 <li><strong>Vectorized computation replaces repeated function calls</strong>, which avoids calling <code>pearsonr</code> thousands of times</li>
 </ol>
 </section>
-<section id="note" class="level3">
-<h3 class="anchored" data-anchor-id="note">4. Note</h3>
+<section id="notes" class="level4">
+<h4 class="anchored" data-anchor-id="notes">4. Notes</h4>
 <ul>
 <li><code>y_obs_z</code> needs to be reshaped: <span class="math inline">\((n,)→(n,1)\)</span></li>
 <li><code>np.nan_to_num</code> handles zero-variance columns safely</li>

@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2026-02-15">
 <meta name="description" content="Dive deeper into the geometric interpretation of linear algebra.">
 
-<title>Course note: Essence of Linear Algebra, Pt.2 – Bagel Calling</title>
+<title>Study Notes | Essence of Linear Algebra, Pt.2 – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +105,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -124,29 +125,25 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -155,14 +152,15 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Course note: Essence of Linear Algebra, Pt.2</h1>
+      <h1 class="title">Study Notes | Essence of Linear Algebra, Pt.2</h1>
                   <div>
         <div class="description">
           Dive deeper into the geometric interpretation of linear algebra.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIL</div>
+                <div class="quarto-category">Study Notes</div>
+                <div class="quarto-category">Mathematics</div>
               </div>
                   </div>
   </div>
@@ -195,8 +193,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#course-note-essence-of-linear-algebra-pt.2" id="toc-course-note-essence-of-linear-algebra-pt.2" class="nav-link active" data-scroll-target="#course-note-essence-of-linear-algebra-pt.2">Course note: Essence of Linear Algebra, Pt.2</a></li>
-  <li><a href="#part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" id="toc-part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" class="nav-link" data-scroll-target="#part2.-dot-product-cross-product-change-of-basis-and-eigenvalues">Part2. Dot product, Cross product, <strong>Change of Basis</strong> and Eigenvalues</a>
+  <li><a href="#dot-product-cross-product-change-of-basis-and-eigenvalues" id="toc-dot-product-cross-product-change-of-basis-and-eigenvalues" class="nav-link active" data-scroll-target="#dot-product-cross-product-change-of-basis-and-eigenvalues">Dot product, Cross product, Change of Basis and Eigenvalues</a>
   <ul class="collapse">
   <li><a href="#dot-product" id="toc-dot-product" class="nav-link" data-scroll-target="#dot-product">1. Dot product</a>
   <ul class="collapse">
@@ -234,18 +231,15 @@ window.Quarto = {
 
 
 
-<section id="course-note-essence-of-linear-algebra-pt.2" class="level1">
-<h1>Course note: Essence of Linear Algebra, Pt.2</h1>
 <p>This blog post is Part 2 of my study notes for <strong>“The Essence of Linear Algebra.”</strong> For Part 1, see <a href="../../posts/Course notes_Essence of Linear Algebra Pt1/index.html">Course notes_Essence of Linear Algebra Pt1</a>.</p>
 <p>The main content includes: the dot product, cross product, change of basis, eigenvectors, and eigenvalues. Continuing the style of the previous post, I will explain concepts from both&nbsp;geometric intuition&nbsp;and&nbsp;algebraic computation&nbsp;perspectives wherever possible.</p>
-</section>
-<section id="part2.-dot-product-cross-product-change-of-basis-and-eigenvalues" class="level1">
-<h1>Part2. Dot product, Cross product, <strong>Change of Basis</strong> and Eigenvalues</h1>
+<section id="dot-product-cross-product-change-of-basis-and-eigenvalues" class="level1">
+<h1>Dot product, Cross product, Change of Basis and Eigenvalues</h1>
 <section id="dot-product" class="level2">
 <h2 class="anchored" data-anchor-id="dot-product">1. Dot product</h2>
 <section id="basic-concept" class="level3">
 <h3 class="anchored" data-anchor-id="basic-concept">Basic concept</h3>
-<p><strong>Geometric Perspective:</strong>&nbsp;The geometric meaning of the dot product of two vectors <span class="math inline">\(\vec{v} \cdot \vec{w}\)</span> is:&nbsp;<strong>the length of the projection of <span class="math inline">\(\vec{w}\)</span> onto <span class="math inline">\(\vec{v}\)</span> multiplied by the length of <span class="math inline">\(\vec{v}\)</span></strong>&nbsp;(and vice versa).</p>
+<p><strong>Geometric Perspective:</strong>&nbsp;The geometric meaning of the dot product of two vectors <span class="math inline">\(\vec{v} \cdot \vec{w}\)</span> is:&nbsp;<strong>the length of the projection of</strong> <span class="math inline">\(\vec{w}\)</span> onto <span class="math inline">\(\vec{v}\)</span> multiplied by the length of <span class="math inline">\(\vec{v}\)</span>&nbsp;(and vice versa).</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="dotproduct_concept.jpg" class="img-fluid figure-img" width="500"></p>
@@ -313,7 +307,7 @@ window.Quarto = {
 <p>Let <span class="math inline">\(\mathcal{B} = {\vec{b}_1,\vec{b}_2}\)</span> be a basis. Then the coordinates of vector <span class="math inline">\(\vec{v}\)</span> in the standard basis, denoted <span class="math inline">\([x\ y]^T\)</span>, and its coordinates in basis <span class="math inline">\(\mathcal{B}\)</span>, denoted <span class="math inline">\([c_1\ c_2]^T\)</span>, satisfy: <span class="math inline">\(\vec{v}=c_1\vec{b_1}+c_2\vec{b_2}\)</span></p>
 <p>We already know that a matrix represents a linear transformation. Previously, we described it as:&nbsp;<strong>the columns of a matrix represent the images of the transformed basis vectors.</strong>&nbsp;A more precise description is:&nbsp;<strong>the columns of a matrix represent the&nbsp;<em>coordinates</em>&nbsp;of the transformed basis vectors.</strong></p>
 <p><span class="math display">\[\begin{bmatrix} x \\ y \end{bmatrix} = \underbrace{\begin{bmatrix} \vec{b}_1 &amp; \vec{b}_2 \end{bmatrix}}_{\text{Transition Matrix } P} \begin{bmatrix} c_1 \\ c_2 \end{bmatrix}\]</span></p>
-<p>The matrix <span class="math inline">\(P\)</span> is called the&nbsp;<strong>change of basis matrix from <span class="math inline">\(\mathcal{B}\)</span> to the standard basis</strong>. Its columns are the coordinates of the basis vectors in <span class="math inline">\(\mathcal{B}\)</span>, expressed in the standard basis.</p>
+<p>The matrix <span class="math inline">\(P\)</span> is called the&nbsp;<strong>change of basis matrix from</strong> <span class="math inline">\(\mathcal{B}\)</span> to the standard basis. Its columns are the coordinates of the basis vectors in <span class="math inline">\(\mathcal{B}\)</span>, expressed in the standard basis.</p>
 </section>
 <section id="linear-transformation-vs.-change-of-basis" class="level3">
 <h3 class="anchored" data-anchor-id="linear-transformation-vs.-change-of-basis">Linear Transformation VS. Change of Basis:</h3>
@@ -333,7 +327,7 @@ window.Quarto = {
 <section id="basic-concept-3" class="level3">
 <h3 class="anchored" data-anchor-id="basic-concept-3">Basic concept</h3>
 <p><strong>Geometric Concept:</strong>&nbsp;For a linear transformation <span class="math inline">\(A\)</span>, most vectors will be knocked off their span (their direction will change). However, there exist special non-zero vectors that are&nbsp;<strong>only stretched or compressed, and do not change direction</strong>&nbsp;(they may point in the exact opposite direction, which is still considered the same line). These vectors are called&nbsp;<strong>eigenvectors</strong>, and the corresponding stretching factor is called the&nbsp;<strong>eigenvalue</strong>.</p>
-<p><strong><span class="math inline">\(A\vec{v} = \lambda \vec{v}\)</span></strong>: (Matrix times vector) equals (vector times scalar)</p>
+<p><span class="math inline">\(A\vec{v} = \lambda \vec{v}\)</span>: (Matrix times vector) equals (vector times scalar)</p>
 <p><strong>Algebraic Derivation Process:</strong></p>
 <ol type="1">
 <li><p>Introduce the identity matrix <span class="math inline">\(I\)</span> to rewrite <span class="math inline">\(\lambda \vec{v}\)</span> as a matrix-vector product: <span class="math inline">\(\lambda \vec{v} = \lambda I \vec{v}\)</span></p>
@@ -352,7 +346,7 @@ window.Quarto = {
 </div>
 <p>Note: In R, the&nbsp;<code>eigen()</code>&nbsp;function returns one normalized eigenvector for each eigenvalue, even though the eigenspace is a one-dimensional line, it only gives one representative vector.</p>
 <div style="color: gray; font-size: 0.9em; margin-top: 2em; border-top: 1px solid #eee; padding-top: 1em;">
-<p><strong>reference</strong></p>
+<p><strong>Reference</strong></p>
 <p>This note is a summary of the online course <a href="https://youtu.be/fNk_zzaMoSs?si=QQmEKh5MriMYjJ1Z">Essence of Linear Algebra</a></p>
 </div>
 

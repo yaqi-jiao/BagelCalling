@@ -8,9 +8,9 @@
 
 <meta name="author" content="Yaqi Jiao">
 <meta name="dcterms.date" content="2026-01-22">
-<meta name="description" content="Git add, git commit, git push.  Just like how you put an elephant into the firdge.">
+<meta name="description" content="git add, git commit, git push.  Just like how you put an elephant into the firdge.">
 
-<title>How to Maintain Git and Your Local Code? – Bagel Calling</title>
+<title>Study Notes | how to maintain Git and your local code – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -130,29 +131,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -161,14 +158,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How to Maintain Git and Your Local Code?</h1>
+      <h1 class="title">Study Notes | how to maintain Git and your local code</h1>
                   <div>
         <div class="description">
-          Git add, git commit, git push. <br>Just like how you put an elephant into the firdge.
+          git add, git commit, git push. <br>Just like how you put an elephant into the firdge.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIL</div>
+                <div class="quarto-category">Study Notes</div>
+                <div class="quarto-category">Git</div>
+                <div class="quarto-category">workflow</div>
               </div>
                   </div>
   </div>
@@ -243,7 +242,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="learning-resources">Learning Resources</h3>
 <ul>
 <li><p>Official GitHub help documentation👇</p>
-<p><a href="https://docs.github.com/en/get-started/start-your-journey/about-github-and-git">https://docs.github.com/en/get-started/start-your-journey/about-github-and-git</a></p></li>
+<p><a href="https://docs.github.com/en/get-started/start-your-journey/about-github-and-git" class="uri">https://docs.github.com/en/get-started/start-your-journey/about-github-and-git</a></p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -252,7 +251,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <ul>
 <li><p>An introduction to Git on a Chinese blog👇</p>
-<p><a href="https://www.ruanyifeng.com/blog/2018/10/git-internals.html">https://www.ruanyifeng.com/blog/2018/10/git-internals.html</a></p></li>
+<p><a href="https://www.ruanyifeng.com/blog/2018/10/git-internals.html" class="uri">https://www.ruanyifeng.com/blog/2018/10/git-internals.html</a></p></li>
 </ul>
 </section>
 <section id="basic-workflow-for-pushing-local-code-to-github" class="level3">
@@ -328,6 +327,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>To back up R scripts, create an <strong>RProject</strong> and select <code>create a git repository</code>. You can then commit files from RStudio, but pushing still requires the terminal.</li>
 <li>Git works equally well on Linux and servers for code management.</li>
 </ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="CoverImage.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+</figure>
+</div>
 
 
 </section>

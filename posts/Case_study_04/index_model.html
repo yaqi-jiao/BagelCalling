@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2026-05-29">
 <meta name="description" content="How a large Python project uses args, paths, and object state to organize experiment metadata and workflow results.">
 
-<title>Case Study | Following Metadata Through a Scientific Python Project – Bagel Calling</title>
+<title>Case Study | following metadata through a scientific python project – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,10 +75,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,6 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -130,29 +131,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -161,14 +158,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Case Study | Following Metadata Through a Scientific Python Project</h1>
+      <h1 class="title">Case Study | following metadata through a scientific python project</h1>
                   <div>
         <div class="description">
-          How a large Python project uses <code>args</code>, paths, and object state to organize experiment metadata and workflow results.
+          How a large Python project uses args, paths, and object state to organize experiment metadata and workflow results.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIB</div>
+                <div class="quarto-category">Case Study</div>
+                <div class="quarto-category">python</div>
+                <div class="quarto-category">workflow</div>
               </div>
                   </div>
   </div>
@@ -202,14 +201,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#case" id="toc-case" class="nav-link active" data-scroll-target="#case">Case</a></li>
-  <li><a href="#study" id="toc-study" class="nav-link" data-scroll-target="#study">study</a>
+  <li><a href="#study" id="toc-study" class="nav-link" data-scroll-target="#study">Study</a>
   <ul class="collapse">
-  <li><a href="#args-as-configuration" id="toc-args-as-configuration" class="nav-link" data-scroll-target="#args-as-configuration"><strong>1. args as configuration</strong></a></li>
+  <li><a href="#args-as-configuration" id="toc-args-as-configuration" class="nav-link" data-scroll-target="#args-as-configuration">1. args as configuration</a></li>
   <li><a href="#metadata-stored-in-paths" id="toc-metadata-stored-in-paths" class="nav-link" data-scroll-target="#metadata-stored-in-paths">2. Metadata stored in paths</a></li>
-  <li><a href="#metadata-stored-in-objects" id="toc-metadata-stored-in-objects" class="nav-link" data-scroll-target="#metadata-stored-in-objects"><strong>3. Metadata stored in objects</strong></a></li>
+  <li><a href="#metadata-stored-in-objects" id="toc-metadata-stored-in-objects" class="nav-link" data-scroll-target="#metadata-stored-in-objects">3. Metadata stored in objects</a></li>
+  </ul></li>
   <li><a href="#my-usage" id="toc-my-usage" class="nav-link" data-scroll-target="#my-usage">My Usage</a></li>
   <li><a href="#takeaways" id="toc-takeaways" class="nav-link" data-scroll-target="#takeaways">Takeaways</a></li>
-  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><strong>Reference</strong></a></li>
   </ul>
 </nav>
 </nav>
@@ -227,115 +227,154 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="case" class="level2">
 <h2 class="anchored" data-anchor-id="case">Case</h2>
 <p>Before starting this project and reading the code, i usually treated paths as simple locations and arguments as simple CLI inputs. But in this project, I noticed that <code>args</code> is used as a shared configuration object. Some values come from CLI, some are generated during runtime, and some are later used to build paths, model names, and tracker states.</p>
-<section id="params.py" class="level4">
-<h4 class="anchored" data-anchor-id="params.py"><strong>params.py</strong></h4>
-<div class="code-scroll">
+<div class="code-details">
+<details>
+<summary>
+Samplecode: parapms.py
+</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> make_output_dir(args, proj_path, script_path, hypertune):</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Create the output directory based on model arguments.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate output date and time</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    output_date_time <span class="op">=</span> datetime.now().strftime(<span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">_%H%M%S"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Program starts at </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(datetime.strptime(output_date_time, <span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">_%H%M%S"</span>).strftime(<span class="st">"</span><span class="sc">%d</span><span class="st">-%m-%Y %H:%M:%S"</span>)))</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> args.output_date_time: args.output_date_time<span class="op">=</span>output_date_time</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define paths</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    args.proj_path <span class="op">=</span> proj_path</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    args.script_path <span class="op">=</span> script_path</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    args.input_path <span class="op">=</span> os.path.join(proj_path, <span class="st">"data"</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Determine folder structure based on hypertuning and epicenter</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    tune_folder <span class="op">=</span> <span class="st">"hypertune"</span> <span class="cf">if</span> hypertune <span class="cf">else</span> <span class="st">""</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    epi <span class="op">=</span> <span class="st">"precuneus"</span> <span class="cf">if</span> <span class="st">"precuneus"</span> <span class="kw">in</span> args.epicenter_list <span class="cf">else</span> (<span class="st">"entorhinal"</span> <span class="cf">if</span> <span class="st">"entorhinal"</span> <span class="kw">in</span> args.epicenter_list <span class="cf">else</span> <span class="st">""</span>)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"null_model"</span> <span class="kw">in</span> args.model_name: tune_folder <span class="op">=</span> <span class="st">"Null_models"</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add connectivity and regional vulnerability to model_name</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args.SC <span class="kw">and</span> args.SC <span class="kw">not</span> <span class="kw">in</span> args.model_name: args.model_name <span class="op">+=</span> <span class="st">"_"</span> <span class="op">+</span> args.SC</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> var <span class="kw">in</span> [<span class="st">"spread_var"</span>, <span class="st">"synthesis_var"</span>, <span class="st">"misfold_var"</span>, <span class="st">"clearance_nor_var"</span>, <span class="st">"clearance_mis_var"</span>]:</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(<span class="bu">getattr</span>(args, var), <span class="bu">str</span>):</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            regional_name <span class="op">=</span> var.split(<span class="st">"_"</span>)[<span class="dv">0</span>] <span class="op">+</span> <span class="st">"-"</span> <span class="op">+</span> <span class="bu">getattr</span>(args, var)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> regional_name <span class="kw">not</span> <span class="kw">in</span> args.model_name:</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>                args.model_name <span class="op">+=</span> <span class="st">"_"</span> <span class="op">+</span> regional_name</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct output path</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    args.output_path <span class="op">=</span> os.path.join(proj_path, <span class="st">"results"</span>, args.simulated_protein, args.protein_type, tune_folder, epi, args.model_name <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span> args.output_date_time)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create output directory</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>    os.makedirs(args.output_path, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Output directory created at: </span><span class="sc">{</span>args<span class="sc">.</span>output_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Generate output date and time</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    output_date_time <span class="op">=</span> datetime.now().strftime(<span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">_%H%M%S"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Program starts at </span><span class="sc">{}</span><span class="st">"</span>.<span class="bu">format</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            datetime.strptime(</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                output_date_time, <span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">_%H%M%S"</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            ).strftime(<span class="st">"</span><span class="sc">%d</span><span class="st">-%m-%Y %H:%M:%S"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        ))</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="kw">not</span> args.output_date_time:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        args.output_date_time <span class="op">=</span> output_date_time</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define paths</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    args.proj_path <span class="op">=</span> proj_path</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    args.script_path <span class="op">=</span> script_path</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    args.input_path <span class="op">=</span> os.path.join(proj_path, <span class="st">"data"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Determine folder structure based on hypertuning and epicenter</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    tune_folder <span class="op">=</span> <span class="st">"hypertune"</span> <span class="cf">if</span> hypertune <span class="cf">else</span> <span class="st">""</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    epi <span class="op">=</span> (<span class="st">"precuneus"</span> <span class="cf">if</span> <span class="st">"precuneus"</span> <span class="kw">in</span> args.epicenter_list</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="st">"entorhinal"</span> <span class="cf">if</span> <span class="st">"entorhinal"</span> <span class="kw">in</span> args.epicenter_list</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> <span class="st">""</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="st">"null_model"</span> <span class="kw">in</span> args.model_name:</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        tune_folder <span class="op">=</span> <span class="st">"Null_models"</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Add connectivity and regional vulnerability to model_name</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> args.SC <span class="kw">and</span> args.SC <span class="kw">not</span> <span class="kw">in</span> args.model_name:</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        args.model_name <span class="op">+=</span> <span class="ss">f"_</span><span class="sc">{</span>args<span class="sc">.</span>SC<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> var <span class="kw">in</span> [</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"spread_var"</span>, <span class="st">"synthesis_var"</span>, <span class="st">"misfold_var"</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"clearance_nor_var"</span>, <span class="st">"clearance_mis_var"</span>,]:</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> <span class="bu">getattr</span>(args, var)</span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> args</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(value, <span class="bu">str</span>):</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>            regional_name <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>var<span class="sc">.</span>split(<span class="st">'_'</span>)[<span class="dv">0</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>value<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> regional_name <span class="kw">not</span> <span class="kw">in</span> args.model_name:</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>                args.model_name <span class="op">+=</span> <span class="ss">f"_</span><span class="sc">{</span>regional_name<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Construct output path</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    args.output_path <span class="op">=</span> os.path.join(</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        proj_path, <span class="st">"results"</span>, args.simulated_protein,</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        args.protein_type, tune_folder, epi,</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="ss">f"</span><span class="sc">{</span>args<span class="sc">.</span>model_name<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>args<span class="sc">.</span>output_date_time<span class="sc">}</span><span class="ss">"</span>,</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create output directory</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>    os.makedirs(args.output_path, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Output directory created at: </span><span class="sc">{</span>args<span class="sc">.</span>output_path<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> args</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<hr>
-</section>
-<section id="class-tuningresultstracker" class="level4">
-<h4 class="anchored" data-anchor-id="class-tuningresultstracker"><strong>Class TuningResultsTracker</strong></h4>
-<div class="code-scroll">
+<div class="code-details">
+<details>
+<summary>
+Samplecode: TuningResultsTracker
+</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, args, param_combinations):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">        Initialize the TuningResultsTracker object with given arguments and hyperparameter combinations.</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co">            args (Namespace): Parsed arguments containing model settings.</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">            param_combinations (list of tuples): List of hyperparameter combinations to evaluate.</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.checked_epicenter <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> args.epicenter_list.split(<span class="st">","</span>)][<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(args.epicenter_list, <span class="bu">str</span>) <span class="cf">else</span> args.epicenter_list[<span class="dv">0</span>]</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_scatter_times_list <span class="op">=</span> args.mean_scatter_times_list</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_jobs <span class="op">=</span> args.n_jobs</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.T_total <span class="op">=</span> args.T_total</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_path <span class="op">=</span> args.output_path</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.param_combinations <span class="op">=</span> param_combinations</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.null_model <span class="op">=</span> args.null_model_i</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize storage structures</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.r_dict <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}},</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}}}</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.best_combination <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter:{}}, <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter:{}}}</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.simulated_data <span class="op">=</span> {<span class="st">"simulation"</span>:[], <span class="st">"Rmis"</span>:[]}</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> summary(<span class="va">self</span>):</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">        Print and summarize the best hyperparameter combinations for each result type.</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> result_type <span class="kw">in</span> <span class="va">self</span>.simulated_data:</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"*"</span><span class="op">*</span><span class="dv">5</span>,result_type,<span class="st">"*"</span><span class="op">*</span><span class="dv">5</span>)</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>            max_r_list, ind_max_param, pred_best <span class="op">=</span> <span class="va">self</span>.get_best_params(result_type)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.checked_epicenter <span class="op">=</span> (</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        args.epicenter_list.split(<span class="st">","</span>)[<span class="dv">0</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">isinstance</span>(args.epicenter_list, <span class="bu">str</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span> args.epicenter_list[<span class="dv">0</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.mean_scatter_times_list <span class="op">=</span> args.mean_scatter_times_list</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.n_jobs <span class="op">=</span> args.n_jobs</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.T_total <span class="op">=</span> args.T_total</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.output_path <span class="op">=</span> args.output_path</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.param_combinations <span class="op">=</span> param_combinations</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.null_model <span class="op">=</span> args.null_model_i</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initialize storage structures</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.y <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.r_dict <span class="op">=</span> {</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">"simulation"</span>: {<span class="va">self</span>.checked_epicenter: {</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">"combinations"</span>: [], <span class="st">"max_r_each_run"</span>: [<span class="op">-</span><span class="dv">1000</span>],</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">"max"</span>: [], <span class="st">"max_indices"</span>: [],</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            }},</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Rmis"</span>: {<span class="va">self</span>.checked_epicenter: {</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"combinations"</span>: [], <span class="st">"max_r_each_run"</span>: [<span class="op">-</span><span class="dv">1000</span>],</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"max"</span>: [], <span class="st">"max_indices"</span>: [],</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>            }},}</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.best_combination <span class="op">=</span> {</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">"simulation"</span>: {<span class="va">self</span>.checked_epicenter: {}},</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"Rmis"</span>: {<span class="va">self</span>.checked_epicenter: {}},</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.simulated_data <span class="op">=</span> {<span class="st">"simulation"</span>: [], <span class="st">"Rmis"</span>: []}</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="va">self</span>.null_model <span class="kw">is</span> <span class="va">None</span>:</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                best_model_name <span class="op">=</span> <span class="ss">f"_p_stay_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">_trans_rate_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">_v_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                <span class="va">self</span>.print_and_plot_best(result_type, pred_best, max_r_list, best_model_name)</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> save(<span class="va">self</span>):</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">        Save the best hyperparameter combinations and simulated data to `self.output_path`.</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>        start <span class="op">=</span> time.time()</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>        np.save(os.path.join(<span class="va">self</span>.output_path,<span class="st">'Y_observed.npy'</span>), <span class="va">self</span>.y)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> result_type <span class="kw">in</span> <span class="va">self</span>.simulated_data:</span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"*"</span><span class="op">*</span><span class="dv">5</span>,result_type,<span class="st">"*"</span><span class="op">*</span><span class="dv">5</span>)</span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> gzip.<span class="bu">open</span>(os.path.join(<span class="va">self</span>.output_path,<span class="st">'Simulated_data_'</span><span class="op">+</span>result_type<span class="op">+</span><span class="st">'.npy'</span>), <span class="st">'wb'</span>) <span class="im">as</span> f:</span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>                np.save(f, np.array(<span class="va">self</span>.simulated_data[result_type], dtype<span class="op">=</span>np.float16))</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Save performance metrics for the current result type</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="va">self</span>.output_path, <span class="st">"hyperparameters_model_performance_"</span> <span class="op">+</span> result_type <span class="op">+</span> <span class="st">".pkl"</span>), <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>                pickle.dump(<span class="va">self</span>.r_dict[result_type], f, protocol<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>            <span class="co"># Save intermediate outputs for the current result type</span></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>            <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="va">self</span>.output_path, <span class="st">"hyperparameters_model_intermediate_outputs_"</span> <span class="op">+</span> result_type <span class="op">+</span> <span class="st">".pkl"</span>), <span class="st">"wb"</span>) <span class="im">as</span> f:</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>                pickle.dump(<span class="va">self</span>.best_combination[result_type], f, protocol<span class="op">=</span><span class="dv">4</span>)</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        end <span class="op">=</span> time.time()</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"saving time: </span><span class="sc">{</span>end <span class="op">-</span> start<span class="sc">}</span><span class="ss">/60 mins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> summary(<span class="va">self</span>):</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> result_type <span class="kw">in</span> <span class="va">self</span>.simulated_data:</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"*"</span> <span class="op">*</span> <span class="dv">5</span>, result_type, <span class="st">"*"</span> <span class="op">*</span> <span class="dv">5</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>        max_r_list, ind_max_param, pred_best <span class="op">=</span> <span class="va">self</span>.get_best_params(result_type)</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="va">self</span>.null_model <span class="kw">is</span> <span class="va">None</span>:</span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>            best_model_name <span class="op">=</span> (</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"_p_stay_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">0</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"_trans_rate_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">1</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"_v_</span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>param_combinations[ind_max_param][<span class="dv">2</span>]<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>            <span class="va">self</span>.print_and_plot_best(</span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>                result_type, pred_best, max_r_list, best_model_name</span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save(<span class="va">self</span>):</span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>    start <span class="op">=</span> time.time()</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    np.save(os.path.join(<span class="va">self</span>.output_path, <span class="st">"Y_observed.npy"</span>), <span class="va">self</span>.y)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> result_type <span class="kw">in</span> <span class="va">self</span>.simulated_data:</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"*"</span> <span class="op">*</span> <span class="dv">5</span>, result_type, <span class="st">"*"</span> <span class="op">*</span> <span class="dv">5</span>)</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> gzip.<span class="bu">open</span>(</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>            os.path.join(<span class="va">self</span>.output_path, <span class="ss">f"Simulated_data_</span><span class="sc">{</span>result_type<span class="sc">}</span><span class="ss">.npy"</span>),</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>            <span class="st">"wb"</span>,) <span class="im">as</span> f:</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>            np.save(f,</span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>                np.array(<span class="va">self</span>.simulated_data[result_type], dtype<span class="op">=</span>np.float16),)</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Save performance metrics for the current result type</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="va">self</span>.output_path,</span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"hyperparameters_model_performance_</span><span class="sc">{</span>result_type<span class="sc">}</span><span class="ss">.pkl"</span>,), <span class="st">"wb"</span>,) <span class="im">as</span> f:</span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>            pickle.dump(<span class="va">self</span>.r_dict[result_type], f, protocol<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Save intermediate outputs for the current result type</span></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>        <span class="cf">with</span> <span class="bu">open</span>(os.path.join(<span class="va">self</span>.output_path,</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a>                <span class="ss">f"hyperparameters_model_intermediate_outputs_</span><span class="sc">{</span>result_type<span class="sc">}</span><span class="ss">.pkl"</span>,),<span class="st">"wb"</span>,) <span class="im">as</span> f:</span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>            pickle.dump(<span class="va">self</span>.best_combination[result_type], f, protocol<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>    end <span class="op">=</span> time.time()</span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"saving time: </span><span class="sc">{</span>(end <span class="op">-</span> start) <span class="op">/</span> <span class="dv">60</span><span class="sc">}</span><span class="ss"> mins"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
 </div>
-<hr>
-</section>
 </section>
 <section id="study" class="level2">
-<h2 class="anchored" data-anchor-id="study">study</h2>
+<h2 class="anchored" data-anchor-id="study">Study</h2>
 <section id="args-as-configuration" class="level3">
-<h3 class="anchored" data-anchor-id="args-as-configuration"><strong>1. args as configuration</strong></h3>
+<h3 class="anchored" data-anchor-id="args-as-configuration">1. args as configuration</h3>
 <p>When i read the code, i can see some important variables, not just from CLI, but also some intermediate arguments, which can be read, are passed as additional parameters to <code>args</code>, making it a storage place for all necessary variables.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>args <span class="op">=</span> parse_arguments(hypertune<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>for example:</p>
+<p>For example:</p>
 <ul>
 <li>user input arguments (the way it is)</li>
 <li>important path information</li>
@@ -343,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>model metadata</li>
 <li>markers</li>
 </ul>
-<p>It can also avoid another problem: if i just use normal variables in the scripts, and does not return it, when I add more functions and want to use the variable, <strong>I can’t</strong>, because it’s being wrapped and not returned. But making functions return too many variables seems not a good idea also, especially you are trying to maintain a very large project and only want to make script return most plain and useful things.</p>
+<p>It can also avoid another problem: If i just use normal variables in the scripts, and does not return it, when I add more functions and want to use the variable, <strong>I can’t</strong>, because it’s being wrapped and not returned. But making functions return too many variables seems not a good idea also, especially you are trying to maintain a very large project and only want to make script return most plain and useful things.</p>
 <p>Passing <code>args</code> among scripts is much more easy and straightforward than passing specific variables, Because you have to pay more attention to details like ‘<em>which variables should I allow this function return? When to update the variables? Do I need this variable in future functions?</em>’</p>
 </section>
 <section id="metadata-stored-in-paths" class="level3">
@@ -372,34 +411,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 </section>
 <section id="metadata-stored-in-objects" class="level3">
-<h3 class="anchored" data-anchor-id="metadata-stored-in-objects"><strong>3. Metadata stored in objects</strong></h3>
+<h3 class="anchored" data-anchor-id="metadata-stored-in-objects">3. Metadata stored in objects</h3>
 <p>The project code is a mixture architecture of OOP and OPP. The <code>TuningResultTracker</code> is a <strong>stateful object</strong>, (Although the project is mostly procedural, the tracker introduces a class because it needs to maintain evolving state across many iterations. i’m not very familar with OOP yet, so i can’t dig very deep into this topic in this case study)</p>
 <p>Anyways, for other OPP scripts, they just need to process received args, but for <code>TuningResultTracker</code>, which has an individual inner system, the variables may keep changing, making global <code>args</code> harder to uodate for every condition, also not all global arguements are needed in this class, so what the code did is:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, args, param_combinations):</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">        Initialize the TuningResultsTracker object with given arguments and hyperparameter combinations.</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">            args (Namespace): Parsed arguments containing model settings.</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co">            param_combinations (list of tuples): List of hyperparameter combinations to evaluate.</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.checked_epicenter <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> args.epicenter_list.split(<span class="st">","</span>)][<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(args.epicenter_list, <span class="bu">str</span>) <span class="cf">else</span> args.epicenter_list[<span class="dv">0</span>]</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_scatter_times_list <span class="op">=</span> args.mean_scatter_times_list</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_jobs <span class="op">=</span> args.n_jobs</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.T_total <span class="op">=</span> args.T_total</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_path <span class="op">=</span> args.output_path</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.param_combinations <span class="op">=</span> param_combinations</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.null_model <span class="op">=</span> args.null_model_i</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize storage structures</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> <span class="va">None</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.r_dict <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}},</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}}}</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.best_combination <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter:{}}, <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter:{}}}</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.simulated_data <span class="op">=</span> {<span class="st">"simulation"</span>:[], <span class="st">"Rmis"</span>:[]}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>It’s worth mentioning that, arguments are not simply being called global arguments, it actually did 3 things:</p>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.checked_epicenter <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> args.epicenter_list.split(<span class="st">","</span>)][<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(args.epicenter_list, <span class="bu">str</span>) <span class="cf">else</span> args.epicenter_list[<span class="dv">0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.mean_scatter_times_list <span class="op">=</span> args.mean_scatter_times_list</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.n_jobs <span class="op">=</span> args.n_jobs</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.T_total <span class="op">=</span> args.T_total</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.output_path <span class="op">=</span> args.output_path</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.param_combinations <span class="op">=</span> param_combinations</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.null_model <span class="op">=</span> args.null_model_i</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Initialize storage structures</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.y <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.r_dict <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}},</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}}}</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.best_combination <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter:{}}, <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter:{}}}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.simulated_data <span class="op">=</span> {<span class="st">"simulation"</span>:[], <span class="st">"Rmis"</span>:[]}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>It’s worth mentioning that, arguments are not simply being called global arguments, it actually did 3 things:</strong></p>
 <ol type="1">
-<li><strong>copy global configuration directly</strong></li>
+<li>copy global configuration directly</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.mean_scatter_times_list <span class="op">=</span> args.mean_scatter_times_list</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.n_jobs <span class="op">=</span> args.n_jobs</span>
@@ -407,11 +439,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.output_path <span class="op">=</span> args.output_path</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.null_model <span class="op">=</span> args.null_model_i</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="2" type="1">
-<li><strong>Process global configuration, then saved into self for easier internal use</strong></li>
+<li>Process global configuration, then saved into self for easier internal use</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.checked_epicenter <span class="op">=</span> [x <span class="cf">for</span> x <span class="kw">in</span> args.epicenter_list.split(<span class="st">","</span>)][<span class="dv">0</span>] <span class="cf">if</span> <span class="bu">isinstance</span>(args.epicenter_list, <span class="bu">str</span>) <span class="cf">else</span> args.epicenter_list[<span class="dv">0</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ol start="3" type="1">
-<li><strong>Initialize empty containers for future results</strong></li>
+<li>Initialize empty containers for future results</li>
 </ol>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.y <span class="op">=</span> <span class="va">None</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.r_dict <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter: {<span class="st">"combinations"</span>:[],<span class="st">"max_r_each_run"</span>:[<span class="op">-</span><span class="dv">1000</span>], <span class="st">"max"</span>:[], <span class="st">'max_indices'</span>:[]}},</span>
@@ -419,8 +451,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.best_combination <span class="op">=</span> {<span class="st">"simulation"</span>:{<span class="va">self</span>.checked_epicenter:{}}, <span class="st">"Rmis"</span>:{<span class="va">self</span>.checked_epicenter:{}}}</span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="va">self</span>.simulated_data <span class="op">=</span> {<span class="st">"simulation"</span>:[], <span class="st">"Rmis"</span>:[]}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="my-usage" class="level3">
-<h3 class="anchored" data-anchor-id="my-usage">My Usage</h3>
+</section>
+<section id="my-usage" class="level2">
+<h2 class="anchored" data-anchor-id="my-usage">My Usage</h2>
 <p>My current code is still mostly procedural, so I only applied the simpler part of this design: using input arguments to decide output organization and workflow conditions:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> main() <span class="op">-&gt;</span> <span class="va">None</span>:</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    args <span class="op">=</span> parse_args()</span>
@@ -434,36 +467,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        data_regions <span class="op">=</span> dat_pred[value_col].to_numpy()</span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>Current limitations:</strong></p>
+<section id="current-limitations" class="level4">
+<h4 class="anchored" data-anchor-id="current-limitations">Current limitations:</h4>
 <ul>
 <li>most of my operations mainly in <code>main()</code> , not become the inter-script pass.</li>
 <li>although i use <code>args.input_dir</code> to generate <code>output_dir</code>, i didn’t save it back to the <code>args</code>.</li>
 <li>I only used <code>args.draw_residual</code> as a most simple condition, exist or not. exist means i want to draw residual</li>
 </ul>
-<p><strong>Possible improvements:</strong></p>
+</section>
+<section id="possible-improvements" class="level4">
+<h4 class="anchored" data-anchor-id="possible-improvements">Possible improvements:</h4>
 <ul>
 <li>save derived paths back into <code>args</code></li>
 <li>use metadata to drive plotting decisions, not CLI</li>
 <li>organize outputs based on experiment settings</li>
 </ul>
 </section>
-<section id="takeaways" class="level3">
-<h3 class="anchored" data-anchor-id="takeaways">Takeaways</h3>
+</section>
+<section id="takeaways" class="level2">
+<h2 class="anchored" data-anchor-id="takeaways">Takeaways</h2>
 <ul>
 <li><p>what can you do with all information might be helpful?</p>
-<p><strong>Path → Variable → Conditions→ Output organization</strong></p></li>
-<li><p>Before write script, you have to think about how to arrange your model information, which variable is most important that it needs to be on the <code>model_name</code></p></li>
+<p>👉 <strong>Path → Variable → Conditions→ Output organization</strong></p></li>
+<li><p>Before write script, you have to think about how to arrange your model information, which variable is most important that it needs to be on the <em>“model_name”</em></p></li>
 <li><p>A well-designed output path can store experiment metadata.</p></li>
 <li><p>Procedural projects may still use OOP when some part of the workflow needs long-lived state.</p></li>
 <li><p>A class can copy, normalize, and store only the configuration it needs.</p></li>
 </ul>
-<p><strong>Reference</strong></p>
-<p>This post is based on my learning from my senior’s SIR simulation project.</p>
-<p>Repository:</p>
-<p><a href="https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR.git">https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR.git</a></p>
-
-
 </section>
+<section id="reference" class="level2">
+<h2 class="anchored" data-anchor-id="reference"><strong>Reference</strong></h2>
+<p>This post documents my own understanding of several implementation details encountered while studying the SIR simulation framework developed by the DeMON Lab. If you are interested in the original methodology, please refer to:</p>
+<ul>
+<li><p><strong>Source code:</strong> <a href="https://github.com/DeMONLab-BioFINDER/Xiao_Tau_simulation_SIR">Xiao_Tau_simulation_SIR</a></p></li>
+<li><p><strong>Preprint:</strong> <a href="https://www.biorxiv.org/content/10.1101/2025.04.17.648358">bioRxiv</a></p></li>
+</ul>
+
+
 </section>
 
 </main> <!-- /main -->

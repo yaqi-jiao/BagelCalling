@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2026-01-28">
 <meta name="description" content="Not an easy pass with distinction">
 
-<title>How to present statistical analysis results properly? – Bagel Calling</title>
+<title>Study Notes | how to present statistical analysis results properly – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -76,6 +76,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -95,29 +96,25 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -126,14 +123,15 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">How to present statistical analysis results properly?</h1>
+      <h1 class="title">Study Notes | how to present statistical analysis results properly</h1>
                   <div>
         <div class="description">
           Not an easy pass with distinction
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIL</div>
+                <div class="quarto-category">Study Notes</div>
+                <div class="quarto-category">Statistics</div>
               </div>
                   </div>
   </div>
@@ -175,7 +173,8 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p>After a nerve-wracking month of waiting, my grade for BIOS15 (Processing and Analysis of Biological Data) is finally out! I received a <strong>VG</strong>🎉, which was not easy, especially since my initial grades for the scientific report writing assignments were quite low. After spending a huge amount of time catching up on statistics and R programming—finally understanding what Linear Regression and (Generalized) linear mixed models actually do—and successfully turning the results into decent-looking graphs with ggplot2 and LaTeX, I still needed to describe them in a scientific, intuitive, and easy-to-understand way. And this is the most important part of making your analysis accessible to both peers and the general public.</p>
+<p>After a nerve-wracking month of waiting, my grade for BIOS15 (Processing and Analysis of Biological Data) is finally out! I received a <strong>VG</strong>🎉, which was not easy, especially since my initial grades for the scientific report writing assignments were quite low.</p>
+<p>After spending a huge amount of time catching up on statistics and R programming—finally understanding what Linear Regression and (Generalized) linear mixed models actually do—and successfully turning the results into decent-looking graphs with ggplot2 and LaTeX, I still needed to describe them in a scientific, intuitive, and easy-to-understand way. And this is the most important part of making your analysis accessible to both peers and the general public.</p>
 <p>After taking this course, I realized that I had received very little training like this in my previous regenerative biology lab. Even when senior PhD students in the research group presented their results and mentioned statistical data, the information I got was often something like, <em>“Compared to the single mutant, the myocardial cells in double mutant zebrafish regenerated significantly 60 days after cardiac surgery,”</em> rather than the more appropriate <em>“The myocardial cells in double mutant zebrafish regenerated by xx% 60 days after cardiac surgery.”</em> This might be another major difference between wet-lab and dry-lab analysis: histology staining results on a PPT seem self-evident, so I never actively considered whether these images and findings needed statistical support. I think that if one wants to transition from wet-lab to dry-lab work, <strong>it’s essential to learn how to present analysis results smartly; otherwise, your conclusions may lack credibility.</strong></p>
 <p>Here are some takeaways I had after the course👇:</p>
 <ol type="1">

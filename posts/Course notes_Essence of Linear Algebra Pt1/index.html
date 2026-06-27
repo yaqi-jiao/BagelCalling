@@ -8,9 +8,9 @@
 
 <meta name="author" content="Yaqi Jiao">
 <meta name="dcterms.date" content="2026-02-09">
-<meta name="description" content="The cover image pays tribute to the essence of linear algebra.">
+<meta name="description" content="The header image pays tribute to the essence of linear algebra.">
 
-<title>Course note: Essence of Linear Algebra, Pt.1 – Bagel Calling</title>
+<title>Study Notes | Essence of Linear Algebra, Pt.1 – Bagel Calling</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -40,10 +40,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-e31584831b205ffbb2d98406f31c2a5b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,6 +105,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
 </head>
 
 <body class="floating nav-fixed quarto-light">
@@ -124,29 +125,25 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">🥯</span></a>
-  </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
-<span class="menu-text">About Bagel</span></a>
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/yaqi-jiao/"> <i class="bi bi-github" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com"> <i class="bi bi-twitter" role="img">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
 </div>
       </div> <!-- /container-fluid -->
     </nav>
@@ -155,14 +152,15 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Course note: Essence of Linear Algebra, Pt.1</h1>
+      <h1 class="title">Study Notes | Essence of Linear Algebra, Pt.1</h1>
                   <div>
         <div class="description">
-          The cover image pays tribute to the essence of linear algebra.
+          The header image pays tribute to the essence of linear algebra.
         </div>
       </div>
                           <div class="quarto-categories">
-                <div class="quarto-category">TIL</div>
+                <div class="quarto-category">Study Notes</div>
+                <div class="quarto-category">Mathematics</div>
               </div>
                   </div>
   </div>
@@ -195,7 +193,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#part-1-vectors-transformations-and-matrices" id="toc-part-1-vectors-transformations-and-matrices" class="nav-link active" data-scroll-target="#part-1-vectors-transformations-and-matrices">Part 1: Vectors, Transformations, and Matrices</a>
+  <li><a href="#vectors-transformations-and-matrices" id="toc-vectors-transformations-and-matrices" class="nav-link active" data-scroll-target="#vectors-transformations-and-matrices">Vectors, Transformations, and Matrices</a>
   <ul class="collapse">
   <li><a href="#what-is-a-vector" id="toc-what-is-a-vector" class="nav-link" data-scroll-target="#what-is-a-vector">1. What is a Vector?</a></li>
   <li><a href="#linear-combination-span-and-basis" id="toc-linear-combination-span-and-basis" class="nav-link" data-scroll-target="#linear-combination-span-and-basis">2. Linear Combination, Span, and Basis</a></li>
@@ -220,11 +218,16 @@ window.Quarto = {
 
 
 
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="BagelScene.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
 <p>This article contains my study notes for the free online course&nbsp;<strong>“Essence of Linear Algebra”</strong>&nbsp;by the YouTube channel&nbsp;<strong>3Blue1Brown</strong>. I consider it to be one of the best introductory resources on the subject. Prior to this, my understanding of matrices and equations was largely confined to rote formula manipulation. This video series fundamentally changed my perspective, inspiring me to&nbsp;<strong>view linear algebra through the lens of geometric transformations</strong>. Not only is this more intuitive, but it often makes problem-solving simpler! As a researcher in biology, this makes perfect sense to me—humans are more sensitive to and understand&nbsp;<strong>concrete, visualizable concepts</strong>&nbsp;(animation &gt; graphics &gt; numbers &gt; abstract symbols) more quickly and deeply.</p>
 <p>To honor the spirit of this tutorial and highlight the geometric nature of linear algebra, I will strive to explain concepts from both algebraic and geometric viewpoints wherever possible.</p>
 <p>Due to the volume of content, these notes will be published in two parts.</p>
-<section id="part-1-vectors-transformations-and-matrices" class="level1">
-<h1>Part 1: Vectors, Transformations, and Matrices</h1>
+<section id="vectors-transformations-and-matrices" class="level1">
+<h1>Vectors, Transformations, and Matrices</h1>
 <section id="what-is-a-vector" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-a-vector">1. What is a Vector?</h2>
 <ul>
@@ -268,7 +271,7 @@ window.Quarto = {
 <p><em>(Geometrically, these are equivalent to:&nbsp;<strong>Grid lines remain parallel and evenly spaced.</strong>)</em></p></li>
 </ol>
 <p><strong>How to Describe Linear Transformations Numerically</strong>:</p>
-<p>The critical insight: Since any vector can be expressed as a linear combination of basis vectors,&nbsp;<strong>if you know where the basis vectors&nbsp;<span class="math inline">\(\hat{i}\)</span>&nbsp;and&nbsp;<span class="math inline">\(\hat{j}\)</span>&nbsp;land after the transformation, you can deduce where&nbsp;<em>any</em>&nbsp;vector lands</strong>.</p>
+<p>The critical insight: Since any vector can be expressed as a linear combination of basis vectors,&nbsp;<strong>if you know where the basis vectors</strong> <span class="math inline">\(\hat{i}\)</span>&nbsp;and&nbsp;<span class="math inline">\(\hat{j}\)</span>&nbsp;land after the transformation, you can deduce where&nbsp;<em>any</em>&nbsp;vector lands.</p>
 <p><strong>Understanding Matrices</strong>:</p>
 <ul>
 <li><p><strong>Geometric Perspective</strong>: A matrix represents a specific&nbsp;<strong>linear transformation rule</strong>.</p></li>
@@ -286,7 +289,7 @@ window.Quarto = {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="M1M2.gif" class="img-fluid figure-img" width="500"></p>
-<figcaption>To compute the product matrix <span class="math inline">\(\mathbf{M}_2\mathbf{M}_1\)</span>: 1. The&nbsp;<strong>first column</strong>&nbsp;is obtained by applying <span class="math inline">\(\mathbf{M}_2\)</span> to the&nbsp;<strong>first column of <span class="math inline">\(\mathbf{M}_1\)</span></strong>&nbsp;(where <span class="math inline">\(\hat{i}\)</span> lands after <span class="math inline">\(\mathbf{M}_1\)</span>); 2. The&nbsp;<strong>second column</strong>&nbsp;is obtained by applying <span class="math inline">\(\mathbf{M}_2\)</span> to the&nbsp;<strong>second column of <span class="math inline">\(\mathbf{M}_1\)</span></strong>&nbsp;(where <span class="math inline">\(\hat{j}\)</span> lands after <span class="math inline">\(\mathbf{M}_1\)</span>)</figcaption>
+<figcaption>To compute the product matrix <span class="math inline">\(\mathbf{M}_2\mathbf{M}_1\)</span>: 1. The&nbsp;<strong>first column</strong>&nbsp;is obtained by applying <span class="math inline">\(\mathbf{M}_2\)</span> to the&nbsp;<strong>first column of</strong> <span class="math inline">\(\mathbf{M}_1\)</span>&nbsp;(where <span class="math inline">\(\hat{i}\)</span> lands after <span class="math inline">\(\mathbf{M}_1\)</span>); 2. The&nbsp;<strong>second column</strong>&nbsp;is obtained by applying <span class="math inline">\(\mathbf{M}_2\)</span> to the&nbsp;<strong>second column of</strong> <span class="math inline">\(\mathbf{M}_1\)</span>&nbsp;(where <span class="math inline">\(\hat{j}\)</span> lands after <span class="math inline">\(\mathbf{M}_1\)</span>)</figcaption>
 </figure>
 </div>
 </section>
@@ -295,7 +298,7 @@ window.Quarto = {
 <p>A linear transformation stretches or squishes space. The determinant&nbsp;<strong>measures this scaling factor</strong>.</p>
 <ul>
 <li><p><strong>Geometric Perspective</strong>: The&nbsp;<strong>absolute value</strong>&nbsp;of the determinant represents the factor by which&nbsp;<strong>areas (in 2D) or volumes (in 3D) are scaled</strong>. The&nbsp;<strong>sign</strong>&nbsp;indicates whether the&nbsp;<strong>orientation</strong>&nbsp;of space is&nbsp;<strong>flipped</strong>&nbsp;(like turning a paper over).</p>
-<p>💡 <strong>Attention:</strong> The determinant is defined&nbsp;<strong>only for&nbsp;<span class="math inline">\(n \times n\)</span>&nbsp;(square) matrices</strong>! The concept of a “volume/area scaling factor” intrinsically requires a transformation <strong>from&nbsp;<span class="math inline">\(\mathbb{R}^n\)</span>&nbsp;to itself</strong>.</p></li>
+<p>💡 <strong>Attention:</strong> The determinant is defined&nbsp;<strong>only for</strong> <span class="math inline">\(n \times n\)</span>&nbsp;(square) matrices! The concept of a “volume/area scaling factor” intrinsically requires a transformation <strong>from</strong> <span class="math inline">\(\mathbb{R}^n\)</span>&nbsp;to itself.</p></li>
 <li><p><strong>Algebraic Perspective</strong>: For a&nbsp;<span class="math inline">\(2 \times 2\)</span>&nbsp;matrix&nbsp;<span class="math inline">\(\begin{bmatrix}a &amp; b\\c &amp; d\end{bmatrix}\)</span>, the determinant is calculated as&nbsp;<span class="math inline">\(ad - bc\)</span>, whose geometric meaning is the area scaling/orientation described above.</p></li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
@@ -339,7 +342,7 @@ window.Quarto = {
 <section id="rank-and-column-space" class="level2">
 <h2 class="anchored" data-anchor-id="rank-and-column-space">7. Rank and Column Space</h2>
 <ul>
-<li><p><strong>Column Space</strong>: The&nbsp;<strong>span of all column vectors</strong>&nbsp;of a matrix&nbsp;<span class="math inline">\(\mathbf{A}\)</span>. Geometrically, it is the set of all possible output vectors&nbsp;<span class="math inline">\(\mathbf{A}\vec{x}\)</span>. It answers: <em>“After transformation&nbsp;<span class="math inline">\(\mathbf{A}\)</span>, where can all vectors land?”</em></p></li>
+<li><p><strong>Column Space</strong>: The&nbsp;<strong>span of all column vectors</strong>&nbsp;of a matrix&nbsp;<span class="math inline">\(\mathbf{A}\)</span>. Geometrically, it is the set of all possible output vectors&nbsp;<span class="math inline">\(\mathbf{A}\vec{x}\)</span>. It answers: *“After transformation* <span class="math inline">\(\mathbf{A}\)</span>, where can all vectors land?”</p></li>
 <li><p><strong>Rank</strong>: The&nbsp;<strong>dimension of the column space</strong>. It describes the dimensionality of the output space after the transformation.</p>
 <ul>
 <li><em>Example</em>: If the output of a transformation is a line, its rank is 1. If the output is a plane, its rank is 2.</li>
@@ -347,7 +350,7 @@ window.Quarto = {
 </ul></li>
 </ul>
 <p>A matrix is&nbsp;<strong>Full Rank</strong>&nbsp;if its rank equals its number of columns (<span class="math inline">\(n\)</span>). This means the transformation does not collapse any dimension&nbsp;<em>within the input space</em>.</p>
-<p><strong>For an&nbsp;<span class="math inline">\(n \times n\)</span>&nbsp;Square Matrix&nbsp;<span class="math inline">\(\mathbf{A}\)</span>, the following are equivalent</strong>:</p>
+<p><strong>For an</strong> <span class="math inline">\(n \times n\)</span>&nbsp;Square Matrix&nbsp;<span class="math inline">\(\mathbf{A}\)</span>, the following are equivalent:</p>
 <ol type="1">
 <li><p><strong>Determinant Condition</strong>:&nbsp;<span class="math inline">\(\det(\mathbf{A}) \neq 0\)</span></p></li>
 <li><p><strong>Rank Condition</strong>:&nbsp;<span class="math inline">\(\mathbf{A}\)</span>&nbsp;is full rank, i.e.,&nbsp;<span class="math inline">\(\text{rank}(\mathbf{A}) = n\)</span></p></li>
@@ -384,7 +387,7 @@ window.Quarto = {
 </div>
 </div>
 <div style="color: gray; font-size: 0.9em; margin-top: 2em; border-top: 1px solid #eee; padding-top: 1em;">
-<p><strong>reference</strong><br>
+<p><strong>Reference</strong><br>
 1. This note is a summary of the online course <a href="https://youtu.be/fNk_zzaMoSs?si=QQmEKh5MriMYjJ1Z">Essence of Linear Algebra</a><br>
 2. Cover image is generated using <a href="https://github.com/3b1b/manim">manim community edition</a> developed by 3b1b</p>
 </div>
