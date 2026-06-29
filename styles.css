@@ -728,3 +728,13 @@ body:not(:has(.quarto-listing)) nav#TOC .nav-link:hover {
     display: none !important;
   }
 } */
+
+/* Show only logo in navbar, hide site title text */
+.navbar-brand .navbar-title {
+  display: none;
+}
+
+/* Optional: adjust logo size */
+.navbar-logo {
+  max-height: 36px;
+}
