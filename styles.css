@@ -255,6 +255,11 @@ div.quarto-post {
   background: var(--bagel-row);
 }
 
+div.quarto-post[hidden],
+.month-block[hidden] {
+  display: none !important;
+}
+
 div.quarto-post:last-child {
   border-bottom: 0 !important;
 }
