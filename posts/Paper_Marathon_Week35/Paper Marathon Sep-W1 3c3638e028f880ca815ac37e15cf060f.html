@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Yaqi Jiao">
+<meta name="dcterms.date" content="2026-09-06">
+<meta name="description" content="Subcortical network organization and what functional connectivity can reveal beyond structural anatomy.">
+
+<title>Paper Marathon | Sep-W1 – Bagel Calling</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-452ddd22d095769a8d9192f3739d5b04.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-7c15756b678718f9e9f511ad1b657d48.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<meta name="google-site-verification" content="Af3bat6aunjq4Tbs1orKkNnYRpFbNTp9f-8lZqVr0NQ">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../../code.css">
+</head>
+
+<body class="floating nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../Logo_picture/navbar.png" alt="" class="navbar-logo light-content">
+    <img src="../../Logo_picture/navbar.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Bagel Calling</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/yaqi-jiao"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Paper Marathon | Sep-W1</h1>
+                  <div>
+        <div class="description">
+          Subcortical network organization and what functional connectivity can reveal beyond structural anatomy.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Paper Marathon</div>
+                <div class="quarto-category">Subcortex</div>
+                <div class="quarto-category">Functional Connectivity</div>
+                <div class="quarto-category">tau</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Yaqi Jiao </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 6, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-human-thalamus-is-an-integrative-hub-for-functional-brain-networks" id="toc-the-human-thalamus-is-an-integrative-hub-for-functional-brain-networks" class="nav-link active" data-scroll-target="#the-human-thalamus-is-an-integrative-hub-for-functional-brain-networks"><strong>The Human Thalamus Is an Integrative Hub for Functional Brain Networks</strong></a>
+  <ul class="collapse">
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#new-knowledge" id="toc-new-knowledge" class="nav-link" data-scroll-target="#new-knowledge">New Knowledge:</a></li>
+  <li><a href="#personal-highlights" id="toc-personal-highlights" class="nav-link" data-scroll-target="#personal-highlights">Personal highlights</a></li>
+  <li><a href="#comment" id="toc-comment" class="nav-link" data-scroll-target="#comment">Comment</a></li>
+  </ul></li>
+  <li><a href="#an-improved-neuroanatomical-model-of-the-default-mode-network-reconciles-previous-neuroimaging-and-neuropathological-findings" id="toc-an-improved-neuroanatomical-model-of-the-default-mode-network-reconciles-previous-neuroimaging-and-neuropathological-findings" class="nav-link" data-scroll-target="#an-improved-neuroanatomical-model-of-the-default-mode-network-reconciles-previous-neuroimaging-and-neuropathological-findings"><strong>An improved neuroanatomical model of the default-mode network reconciles previous neuroimaging and neuropathological findings</strong></a>
+  <ul class="collapse">
+  <li><a href="#summary-1" id="toc-summary-1" class="nav-link" data-scroll-target="#summary-1">Summary</a></li>
+  <li><a href="#new-knowledge-1" id="toc-new-knowledge-1" class="nav-link" data-scroll-target="#new-knowledge-1">New knowledge</a></li>
+  <li><a href="#personal-highlight" id="toc-personal-highlight" class="nav-link" data-scroll-target="#personal-highlight">Personal highlight</a></li>
+  <li><a href="#comment-1" id="toc-comment-1" class="nav-link" data-scroll-target="#comment-1">Comment</a></li>
+  </ul></li>
+  <li><a href="#subcortical-gray-matter-volumes-and-5year-dementia-risk-in-individuals-with-subjective-cognitive-decline-or-mild-cognitive-impairment-a-multicohort-analysis" id="toc-subcortical-gray-matter-volumes-and-5year-dementia-risk-in-individuals-with-subjective-cognitive-decline-or-mild-cognitive-impairment-a-multicohort-analysis" class="nav-link" data-scroll-target="#subcortical-gray-matter-volumes-and-5year-dementia-risk-in-individuals-with-subjective-cognitive-decline-or-mild-cognitive-impairment-a-multicohort-analysis">Subcortical gray matter volumes and 5‐year dementia risk in individuals with subjective cognitive decline or mild cognitive impairment: A multi‐cohort analysis</a>
+  <ul class="collapse">
+  <li><a href="#summary-2" id="toc-summary-2" class="nav-link" data-scroll-target="#summary-2">Summary</a></li>
+  <li><a href="#new-knowledge-2" id="toc-new-knowledge-2" class="nav-link" data-scroll-target="#new-knowledge-2">New knowledge</a></li>
+  <li><a href="#personal-highlights-1" id="toc-personal-highlights-1" class="nav-link" data-scroll-target="#personal-highlights-1">Personal highlights</a></li>
+  <li><a href="#comment-2" id="toc-comment-2" class="nav-link" data-scroll-target="#comment-2">Comment</a></li>
+  </ul></li>
+  <li><a href="#precision-functional-mapping-of-the-subcortex-and-cerebellum" id="toc-precision-functional-mapping-of-the-subcortex-and-cerebellum" class="nav-link" data-scroll-target="#precision-functional-mapping-of-the-subcortex-and-cerebellum"><strong>Precision functional mapping of the subcortex and cerebellum</strong></a>
+  <ul class="collapse">
+  <li><a href="#summary-3" id="toc-summary-3" class="nav-link" data-scroll-target="#summary-3">Summary</a></li>
+  <li><a href="#new-knowledge-3" id="toc-new-knowledge-3" class="nav-link" data-scroll-target="#new-knowledge-3">New Knowledge</a></li>
+  <li><a href="#personal-highlights-2" id="toc-personal-highlights-2" class="nav-link" data-scroll-target="#personal-highlights-2">Personal highlights</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  </ul></li>
+  <li><a href="#resource" id="toc-resource" class="nav-link" data-scroll-target="#resource">Resource</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<p>This week’s reads focus on how subcortical structures are organized within large-scale brain networks, and how neuroimaging can capture that organization with greater anatomical and functional precision. Seed-based functional connectivity from the entorhinal cortex and basal forebrain was linked to cortical tau burden, while thalamo-cortical tractography revealed structural and effective-connectivity disruptions in amnestic MCI. At a much finer scale, post-mortem analysis of the anterodorsal thalamic nucleus showed strikingly early and cell-type-selective pTau pathology within the Papez circuit, challenging a simple cortex-to-thalamus spreading model. Meanwhile, multimodal ADNI analyses suggested that amyloid-associated hyperconnectivity to tau epicenters may partly mediate subsequent tau accumulation across connected cortical regions. Overall, these studies made me increasingly interested in functional connectivity as a way to characterize subcortical organization beyond what structural anatomy alone can reveal.</p>
+<section id="the-human-thalamus-is-an-integrative-hub-for-functional-brain-networks" class="level2">
+<h2 class="anchored" data-anchor-id="the-human-thalamus-is-an-integrative-hub-for-functional-brain-networks"><strong>The Human Thalamus Is an Integrative Hub for Functional Brain Networks</strong></h2>
+<p>Hwang et al., J Neurosci (2017) <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5469300/">10.1523/JNEUROSCI.0067-17.2017</a></p>
+<section id="summary" class="level3">
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
+<p>Different thalamus nuclei have different roles in connecting subcortex, cortex, and other thalamus nuclei, which, from graph theory, makes it has provincial and connector hub potential.</p>
+<p>To relate network topology to cognitive functions, this study investigated the <strong>topological role of the thalamus within cortical functional networks</strong> using resting-state functional connectivity and graph theory.</p>
+<p>They found:</p>
+<ul>
+<li>Many thalamic subdivisions exhibited strong <strong>provincial hub properties</strong> (high WMD), indicating strong connectivity within particular cortical functional networks</li>
+<li>Nearly all thalamic subdivisions exhibited strong <strong>connector hub properties</strong> (high PC), indicating distributed connectivity across multiple cortical functional networks.</li>
+<li>Several anatomically defined thalamic nuclei, including AN, MD, VA, VL, LP and PuM, showed diffuse functional connectivity with multiple cortical networks.</li>
+<li>BrainMap meta-analysis showed that thalamic regions participate in multiple cognitive components, supporting their proposed integrative role.</li>
+<li>Focal thalamic lesions disrupted cortical network modularity and increased between-network connectivity, suggesting that the thalamus contributes to maintaining cortical network organization.</li>
+</ul>
+<p><img src="image.png" class="img-fluid"></p>
+</section>
+<section id="new-knowledge" class="level3">
+<h3 class="anchored" data-anchor-id="new-knowledge">New Knowledge:</h3>
+<ul>
+<li>The thalamus can be divided into the following two types of nuclei:
+<ul>
+<li>first-order nuclei (including the lateral geniculate nucleus (LGN) and the ventral posterior (VP) nuclei, receive inputs from ascending sensory pathways or other subcortical brain regions)</li>
+<li>higher-order thalamic nuclei (including the mediodorsal and pulvinar nuclei, receive inputs predominately from the cortex)</li>
+</ul></li>
+</ul>
+</section>
+<section id="personal-highlights" class="level3">
+<h3 class="anchored" data-anchor-id="personal-highlights">Personal highlights</h3>
+<ul>
+<li><p>The paper distinguishes <strong>functional subdivisions from anatomical nuclei</strong>. Its functional parcellation assigns each thalamic voxel according to the cortical functional network with which it shows the strongest FC, whereas the Morel atlas defines anatomical nuclei histologically.</p></li>
+<li><p>In this study, the functional parcellation is relatively coarse (9 subdivisions) compared with the Morel atlas (15 nuclei/subdivisions), but this does not mean that parcellations are inherently larger than nuclei.</p></li>
+<li><p>The authors argue that spatially distinct signals from thalamic subdivisions can be detected at conventional <strong>2–4 mm MRI resolution</strong>. This supports subdivision-level analyses but should <strong>not</strong> be interpreted as precise anatomical resolution of individual thalamic nuclei.</p></li>
+<li><p>The graph analysis is fundamentally based on <strong>thalamocortical functional connectivity</strong>. The DTI-based and histology-based atlases serve mainly as alternative definitions of thalamic subdivisions rather than independent SC analyses.</p></li>
+<li><p><strong>Most important.</strong> At the last part, they did Thalamic lesions research. They hypothesized that, the lesion of thalamus will reduce the modular organization of these networks.</p>
+<p>they didn’t break the complete of FC/SC, they studied special patients with real focal thalamic lesions as a natural perturbation rather than artificially removing FC or SC connections. And see how thalamus lesion would influence the modular organization. For each patient, they mapped the lesioned thalamic voxels and identified the cortical functional networks normally connected to those voxels using data from healthy controls.</p>
+<p>They then compared <strong>between-network and within-network connectivity strength</strong> in those lesion-related cortical networks with healthy controls. Thalamic lesions were associated with <strong>reduced whole-brain cortical modularity</strong>, increased between-network connectivity, and in most patients reduced within-network connectivity.</p>
+<p>This provides lesion-based evidence that the thalamus may help maintain the modular organization of cortical functional networks, rather than merely acting as a passive relay or connector.</p>
+<p><img src="image 1.png" class="img-fluid"></p></li>
+</ul>
+</section>
+<section id="comment" class="level3">
+<h3 class="anchored" data-anchor-id="comment">Comment</h3>
+<p>Very important. and this research is so well-organized. The study asks whether thalamic regions occupy a special topological position within cortical functional network architecture. For me, it provides another way to see how the lesion region will influence the connectivity.</p>
+</section>
+</section>
+<section id="an-improved-neuroanatomical-model-of-the-default-mode-network-reconciles-previous-neuroimaging-and-neuropathological-findings" class="level2">
+<h2 class="anchored" data-anchor-id="an-improved-neuroanatomical-model-of-the-default-mode-network-reconciles-previous-neuroimaging-and-neuropathological-findings"><strong>An improved neuroanatomical model of the default-mode network reconciles previous neuroimaging and neuropathological findings</strong></h2>
+<p>Alves et al., Commun Biol (2019) <a href="https://www.nature.com/articles/s42003-019-0611-3">10.1038/s42003-019-0611-3</a></p>
+<section id="summary-1" class="level3">
+<h3 class="anchored" data-anchor-id="summary-1">Summary</h3>
+<p>Previous DMN research has been largely <strong>corticocentric</strong>, while the contribution of small subcortical structures has been less well characterized. When subjects are aligned only according to anatomical MRI features, functionally corresponding small regions may still fail to overlap well at the group level and can therefore be weakened or “averaged out.”</p>
+<p>This study proposed a DMN model including subcortical structures such as the <strong>basal forebrain, medial septal/cholinergic regions, anterior and mediodorsal thalamic nuclei</strong>, and then used diffusion MRI tractography to examine the structural connectivity supporting this expanded DMN model.</p>
+<p>They found:</p>
+<ul>
+<li>Functional alignment produced higher DMN connectivity values and sharper anatomical definition than conventional anatomical alignment, with particularly large differences in the <strong>thalamus and basal forebrain</strong>.</li>
+<li>In the DMN structural network, the <strong>thalamus and basal forebrain showed relatively high node degree and betweenness centrality</strong>, suggesting that they are structurally central nodes rather than peripheral additions to the network</li>
+</ul>
+<p><img src="image 2.png" class="img-fluid"></p>
+</section>
+<section id="new-knowledge-1" class="level3">
+<h3 class="anchored" data-anchor-id="new-knowledge-1">New knowledge</h3>
+<ul>
+<li><p><strong>Registration = spatial alignment between images/maps in different spaces</strong></p>
+<p>Neuroimaging data from the same participant may exist in different native spaces because of differences in acquisition geometry, voxel size, orientation, distortion, and head position</p>
+<p>For example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>T1 image in T1 native space</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>PET image in PET native space</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DWI image in DWI native space</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fMRI image in fMRI native space</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>atlas/label map in atlas or template space</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        ↓</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    registration</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        ↓</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>spatial correspondence between these spaces</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Registration uses mathematical spatial transformations, such as translation, rotation, scaling, affine transformation, or nonlinear warping, to establish correspondence between spaces.</p>
+<p><strong>Important:</strong> Registration does not itself create connectivity, ROIs, or parcellation.</p>
+<p>ROI definitions come from <strong>segmentation/parcellation or an existing atlas</strong>. Registration only allows those labels to be aligned or transferred between spaces.</p></li>
+<li><p><strong>Image, map, atlas, and space are different concepts.</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>image  = voxel-wise acquired or reconstructed signal</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>map    = voxel-wise spatial distribution of some value or label</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>atlas  = reference label map</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>space  = coordinate/reference framework</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>tau-PET image      = voxel-wise tracer signal</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>FA map             = voxel-wise diffusion-derived values</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>segmentation map   = voxel-wise region labels</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>atlas              = reference labeled map</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>MNI152 space       = common coordinate system</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+<li><p><strong>Atlas is not an imaging modality.</strong> PET, rs-fMRI, DWI, and T1 MRI are acquired imaging data. An atlas is a reference map containing anatomical or functional labels. An atlas can be transformed into a subject’s native space, or subject data can be transformed into the atlas/standard space.</p></li>
+<li><p>Many neuroimaging papers perform registration as routine preprocessing, so it is easy to overlook. Terms such as <strong>registration, co-registration, normalization, transformation, and warping</strong> often appear before the actual biological/statistical analysis.</p>
+<ul>
+<li><strong>Surface-based registration</strong> treats the cortical sheet as a 2D folded surface and aligns cortical features such as sulci, gyri, and curvature. It is mainly useful for cortex.</li>
+<li><strong>Volume-based registration</strong> treats the brain as a 3D voxel volume and aligns the whole image volume. It can therefore include both cortical and subcortical regions.</li>
+</ul></li>
+<li><p><strong>MNI152</strong> is a standard anatomical reference space derived from multiple human MRI scans.</p></li>
+<li><p><strong>Normalization</strong> usually refers to transforming an individual brain into a standard space such as MNI152.</p></li>
+<li><p>structural alignment = anatomy-based image alignment, structural connectivity = white-matter connectivity inferred from DWI tractography. Functional alignment also does not mean FC itself.</p></li>
+<li><p><strong>Deformation / warping</strong> means applying a mathematical spatial transformation to an image or map so that corresponding structures or functional patterns align more closely. It does not mean that the physical brain itself is being deformed.</p></li>
+<li><p><strong>A minimal workflow</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(**raw image**) </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>*voxel-wise signal with coordinates in its native space, but without ROI labels*</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>segmentation/parcellation </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>*using anatomical information, FreeSurfer, or an existing atlas/parcellation such as DK*</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>(**labeled map**) </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>*voxels have spatial coordinates and ROI labels*</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>registration / coregistration</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>*if another modality or space needs to be aligned*</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>transform/apply the ROI labels to PET / DWI / fMRI</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>(**spatially aligned multimodal data**) </span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>*different modalities can now be matched to the same anatomical ROIs*</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>   ↓</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>extract regional values or connectivity from each ROI</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div></li>
+</ul>
+</section>
+<section id="personal-highlight" class="level3">
+<h3 class="anchored" data-anchor-id="personal-highlight">Personal highlight</h3>
+<ul>
+<li>anatomical correspondence does not guarantee exact functional correspondence, especially for small and variable subcortical structures, group averaging of anatomy-based alignment may underestimate their contribution.</li>
+<li>DWI and graph theory was used to provide <strong>structural support</strong> for the functionally identified network. This kind of agrees with the logic.</li>
+</ul>
+<p><img src="image 3.png" class="img-fluid"></p>
+</section>
+<section id="comment-1" class="level3">
+<h3 class="anchored" data-anchor-id="comment-1">Comment</h3>
+<p>This paper gave me a very good chance to understand where my SUVR data come from.</p>
+<p>The study performed two related group-level analyses on the same participants. First, the individual DMN maps were already expressed in conventional <strong>MNI152 anatomical space</strong>, where they could be combined across subjects to produce the conventional group DMN map. Second, the same individual DMN maps underwent an additional <strong>functional registration</strong>. Their functional patterns were iteratively aligned to construct a study-specific common functional space, after which the aligned maps were combined to produce a functionally aligned group DMN map.</p>
+<p>However, the paper only partially solves the issue of inter-individual variability. It improves <strong>subject-specific alignment of functional DMN patterns</strong>, but the anatomical identity of the resulting subcortical clusters is still validated using population-level templates and probabilistic/variability maps rather than the true nucleus boundaries measured separately in each participant.</p>
+</section>
+</section>
+<section id="subcortical-gray-matter-volumes-and-5year-dementia-risk-in-individuals-with-subjective-cognitive-decline-or-mild-cognitive-impairment-a-multicohort-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="subcortical-gray-matter-volumes-and-5year-dementia-risk-in-individuals-with-subjective-cognitive-decline-or-mild-cognitive-impairment-a-multicohort-analysis">Subcortical gray matter volumes and 5‐year dementia risk in individuals with subjective cognitive decline or mild cognitive impairment: A multi‐cohort analysis</h2>
+<p>Rosbergen et al., Alzheimer’s &amp; Dementia (2025) <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12238309/">10.1002/alz.70413</a></p>
+<section id="summary-2" class="level3">
+<h3 class="anchored" data-anchor-id="summary-2">Summary</h3>
+<p>To clarify the prognostic value of subcortical gray matter structures beyond the hippocampus, this study assessed baseline subcortical volumes on MRI in individuals with subjective cognitive decline (SCD) or mild cognitive impairment (MCI) from two memory clinic-based cohorts and one population-based cohort, and examined their associations with 5-year dementia risk using Cox proportional hazards models.</p>
+<p>They found:</p>
+<ul>
+<li>Smaller volumes of the hippocampus and amygdala were consistently associated with increased dementia risk, independent of other subcortical structures.</li>
+<li>Smaller hippocampal volume was predominantly associated with the clinical diagnosis of AD, but the prognostic value did not differ by amyloid status.</li>
+<li>Smaller pallidal volume was associated with decreased dementia risk in NACC, but this finding was not replicated in the other cohorts. Thalamic volume was not independently associated with dementia risk in the two clinic-based cohorts, and the association in the Rotterdam Study was not statistically significant. No other subcortical structure showed a consistent association with dementia risk across all three cohorts.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image 4.png" class="img-fluid figure-img"></p>
+<figcaption>Subcortical structures and the risk of dementia. Hazard ratio per standard deviation decrease of subcortical structure volume, adjusted for age, sex, education, MRI field strength, MRI scanner, intracranial volume, cortical gray matter, and volumes of all other subcortical structures. Error bars depict 95% confidence intervals. <em>source: Rosbergen et al.&nbsp;(2025)</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="new-knowledge-2" class="level3">
+<h3 class="anchored" data-anchor-id="new-knowledge-2">New knowledge</h3>
+<ul>
+<li><p>Cox proportional hazard model. It still belongs to the regression framework, but is designed for <strong>time-to-event data</strong>, where the outcome contains both whether an event occurred and how long the participant was followed before the event or censoring. It is widely used in clinical research, epidemiology, and survival analysis.</p>
+<p>the model is:</p>
+<p><span class="math inline">\(h(t|X) = h_0(t)exp(β_1X_1+β_2X_2+…)\)</span></p>
+<p>where <span class="math inline">\(h(t|X)\)</span> represents the hazard of experiencing the event at time tt, conditional on the participant remaining event-free up to that time.</p></li>
+</ul>
+</section>
+<section id="personal-highlights-1" class="level3">
+<h3 class="anchored" data-anchor-id="personal-highlights-1">Personal highlights</h3>
+<ul>
+<li>Large and heterogeneous longitudinal sample: 7076 participants from three cohorts were followed for up to 5 years, including both memory clinic-based and population-based samples.</li>
+<li>they fitted Cox regression model 3 times for each ROI, each cohort with progressively more covariate adjustment:
+<ul>
+<li><strong>Model 1:</strong> intracranial volume + MRI scanner / field strength</li>
+<li><strong>Model 2:</strong> Model 1 + age + sex + education</li>
+<li><strong>Model 3:</strong> Model 2 + other subcortical volumes + global cortical gray matter volume</li>
+</ul></li>
+</ul>
+</section>
+<section id="comment-2" class="level3">
+<h3 class="anchored" data-anchor-id="comment-2">Comment</h3>
+<p>I wondered whether MRI acquired at 1T or 1.5T would provide insufficient resolution for studying relatively small subcortical structures. And we really need to reach an agreement about hippocampus and amygdala, are they parts of MTL or subcortical.</p>
+<p>This is mainly an epidemiological/statistical prognostic study rather than a mechanistic study. For my current interests, this therefore feels relatively superficial mechanistically, although the multi-cohort replication and the progressively adjusted models make the evidence statistically robust.</p>
+</section>
+</section>
+<section id="precision-functional-mapping-of-the-subcortex-and-cerebellum" class="level2">
+<h2 class="anchored" data-anchor-id="precision-functional-mapping-of-the-subcortex-and-cerebellum"><strong>Precision functional mapping of the subcortex and cerebellum</strong></h2>
+<p>Marek et al., Current Opinion in Behavioral Sciences (2021) <a href="https://www.sciencedirect.com/science/article/pii/S2352154620301996">10.1016/j.cobeha.2020.12.011</a></p>
+<section id="summary-3" class="level3">
+<h3 class="anchored" data-anchor-id="summary-3">Summary</h3>
+<p>This review mainly summarized several highlight papers to introduce how precision functional mapping enables reliable maps of brain functional network, especially in subcortex and cerebellum :</p>
+<ul>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0896627317305627">Parallel interdigitated distributed networks within the individual estimated by intrinsic functional connectivity</a> <em>(Robust single-subject data from 4 individuals described subnetworks of the default mode network throughout the cerebral cortex. Moreover, individual subjects showed measurable and robust deviations away from the central tendency described in group average studies.)</em></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S089662731730613X">Precision functional mapping of individual human brains</a> <em>(Marked the expansion of single-subject imaging to a cohort of 10 individuals, showing increased reliability of fMRI data, specifically resting-state functional connectivity (RSFC), with increasing data quantities. Functional network organization was characterized in each individual’s cerebral cortex, providing evidence that all functional networks show measurable deviation away from the group average.)</em></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0896627319309754">Integrative and network-specific connectivity of the basal ganglia and thalamus defined in individuals</a> <em>(Details the functional network organization of the basal ganglia and thalamus in 10 individuals from the Midnight Scan Club dataset. Precision functional mapping revealed the existence of both segregated and integrated functional network representations. Three integration zones were consistent across individuals, including motor, visual attention, and cognitive integration zones. The motor integration zone was near the ventral intermediate nucleus of thalamus, a site for deep brain stimulation to treat essential tremor.)</em></li>
+<li><a href="https://www.sciencedirect.com/science/article/pii/S0896627318308985">Spatial and temporal organization of the individual human cerebellum</a> <em>(Details the functional network organization of the cerebellum in 10 individuals from the Midnight Scan Club dataset. Precision functional mapping revealed individual-specific functional network representations, disproportionate overrepresentation of the frontoparietal control network in the cerebellum, and systematic lag in BOLD activity relative to the cerebral cortex.)</em></li>
+<li><a href="https://www.pnas.org/doi/epdf/10.1073/pnas.1910842117?src=getftr&amp;utm_source=sciencedirect_contenthosting&amp;getft_integrator=sciencedirect_contenthosting">Individual-specific functional connectivity of the amygdala: a substrate for precision psychiatry</a> <em>(Applied precision functional mapping to the amygdala, establishing amygdala subdivisions containing default mode and dorsal attention network representations, rather than a unitary default mode representation.)</em></li>
+<li><a href="https://journals.physiology.org/doi/full/10.1152/jn.00561.2020">The detailed organization of the human cerebellum estimated by intrinsic functional connectivity within the individual</a> <em>(Described cerebellar functional network organization in two highly sampled individuals. Found triple representation of functional networks in the cerebellum, as well as a representation of the visual network in the vermis.)</em></li>
+</ul>
+</section>
+<section id="new-knowledge-3" class="level3">
+<h3 class="anchored" data-anchor-id="new-knowledge-3">New Knowledge</h3>
+<ul>
+<li>basal ganglia and thalamus interconnect cortex via cortico-striato-thalamic and cortio-thalamo-cortical loops structurally. These 2 classical loops describe segregated, parallel circuits supporting discrete functions, but there is evidence for “<em>integration between circuits within the&nbsp;subcortex&nbsp;from distal cortical projections, and from the cerebellum</em>”.</li>
+</ul>
+</section>
+<section id="personal-highlights-2" class="level3">
+<h3 class="anchored" data-anchor-id="personal-highlights-2">Personal highlights</h3>
+<ul>
+<li>Most precision functional mapping studies utilized resting-state functional connectivity (RSFC)</li>
+<li>DBS (deep brain stimulation) is a (invasive?) (potential) clinical translation of precision functional mapping that electrodes are placed in the brain and subsequently stimulated. DBS usually targets subcortical structures (thalamus, globus pallidus and subthalamus nucleus). precision functional mapping can be combined with DBS to show how stimulations of a given targeted functional network relates to clinical outcomes.</li>
+<li>Based on the functional data, subcortex is systematic, 3 integration zones combining distinct functional networks in 3 subcortical regions, especially motor and visual attention integration zones showed consistence across participants, suggesting the cingulo-opercular network might help to control. But cognitive integration zones included some anatomical regions (<strong>head of the caudate, dorsal thalamus</strong>) with consistency across subjects, but other regions (<strong>putamen, pallidum</strong>) that were quite individually variable (i.e.&nbsp;different networks converging in different subjects)</li>
+<li>Different from subcortex, networks within the cerebellum were functionally segregated and exhibited sharp boundaries between networks</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="image 5.png" class="img-fluid figure-img"></p>
+<figcaption>subcortical integration zones: motor, visual attention, and cognitive. <em>source: Greene et al.&nbsp;(2020)</em></figcaption>
+</figure>
+</div>
+</section>
+<section id="comments" class="level3">
+<h3 class="anchored" data-anchor-id="comments">Comments</h3>
+<p>Precision functional mapping is more targeted to individuals, which means the number of participants might be less than some cohort-level studies. And I like the way how they explain they characterize functional organization along 2 principle axes: segregation versus integration (RFFC with one versus multiple cortical network), group versus individual (consistent organization versus variable organization across individuals).</p>
+<p>And it’s really good to know that it is possible to obtain reliable RSFC in subcortex. I’m excited, and I think functional data can be strongly complement the limitation of structure data.</p>
+</section>
+</section>
+<section id="resource" class="level2">
+<h2 class="anchored" data-anchor-id="resource">Resource</h2>
+<ul>
+<li><p>A maybe useful discussion about brain segmentation and parcellation. <a href="https://psychology.stackexchange.com/questions/28066/what-is-the-difference-between-brain-parcellation-and-brain-segmentation-quest">https://psychology.stackexchange.com/questions/28066/what-is-the-difference-between-brain-parcellation-and-brain-segmentation-quest</a></p>
+<p><strong>Brain Parcellation</strong> (in Freesurfer) is splitting images of the brain into their defined partitions, mapping the brain <em>(ROIs, or functional regions)</em></p>
+<p><a href="https://doi.org/10.1016/j.media.2020.101639">Thyreau &amp; Taki (2020)</a>&nbsp;points out:</p>
+<blockquote class="blockquote">
+<p>The parcellation of the human cortex into meaningful anatomical units is a common step of various neuroimaging studies. There have been multiple successful efforts to process magnetic resonance (MR) brain images automatically and identify specific anatomical regions, following atlases defined from cortical landmarks. Those definitions usually rely first on a high-quality brain surface reconstruction. On the other hand, when high accuracy is not a requirement, simpler methods based on warping a probabilistic atlas have been widely adopted.</p>
+</blockquote>
+<p><img src="image 6.png" class="img-fluid"></p>
+<p><strong>Brain segmentation</strong> initially involves the removal of non-cerebral tissues like skull. But, segmentation is also (<a href="https://doi.org/10.1155/2015/450341">Despotović, et al.&nbsp;2015</a>)</p>
+<blockquote class="blockquote">
+<p>commonly used for measuring and visualizing the brain’s anatomical structures, for analyzing brain changes, for delineating pathological regions, and for surgical planning and image-guided interventions. In the last few decades, various segmentation techniques of different accuracy and degree of complexity have been developed and reported in the literature. Image from&nbsp;<a href="https://doi.org/10.1371/journal.pone.0236493">Lee et al.&nbsp;(2020)</a></p>
+</blockquote>
+<p><img src="image 7.png" class="img-fluid"></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/yaqi-jiao\.github\.io\/BagelCalling\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
