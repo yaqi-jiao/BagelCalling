@@ -137,6 +137,39 @@ body:has(.quarto-listing) #title-block-header h1.title {
   display: none;
 }
 
+/* Homepage intro under Bagel Calling */
+body:has(.quarto-listing) .blog-intro {
+  margin-top: -28px;
+  margin-bottom: 48px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
+}
+
+body:has(.quarto-listing) .blog-description {
+  margin: 0;
+  max-width: 620px;
+
+  font-size: 0.92rem;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--bagel-muted);
+}
+
+body:has(.quarto-listing) .blog-description a {
+  color: var(--bagel-text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+body:has(.quarto-listing) .blog-tagline {
+  margin: 8px 0 0 0;
+
+  font-size: 0.78rem;
+  line-height: 1.4;
+  font-style: italic;
+  color: var(--bagel-faint);
+}
+
 .quarto-title-banner {
   min-height: 0 !important;
   background: transparent !important;
